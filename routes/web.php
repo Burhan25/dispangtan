@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
- /*------------------------ Admin Route ------------------------ */
+ /*------------------------ Route Auth ------------------------ */
 
  Route::prefix('admin')->group(function (){
 
@@ -27,33 +27,83 @@ use App\Http\Controllers\AdminController;
  });
 
 
- /*------------------------ End Admin Route ------------------------ */
+ /*------------------------ End Route Auth ------------------------ */
+
+ /*------------------------ Route User ------------------------ */
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', function () {
-    return view ('frontend.master');
+    return view ('frontend.home');
 });
 Route::get('/panduan', function () {
     return view ('frontend.panduan');
 });
+Route::get('/paramedik', function () {
+    return view ('frontend.paramedik');
+});
 Route::get('/blog', function () {
     return view ('frontend.blog');
 });
+Route::get('/konsultasi', function () {
+    return view ('frontend.konsultasi');
+});
+/*------------------------ End Route User ------------------------ */
 
+/*------------------------ Route Login & Register ------------------------ */
 Route::get('/loginfoms', function () {
-    return view ('backend.login');
+    return view ('login.login');
 });
 Route::get('/registerfoms', function () {
-    return view ('backend.register');
+    return view ('login.register');
 });
-Route::get('/dashboardfoms', function () {
-    return view ('backend.dashboard');
+/*------------------------ End Route Login & Register ------------------------ */
+
+/*------------------------ Route Admin ------------------------ */
+Route::get('/dashboardadmin', function () {
+    return view ('admin.dashboard');
 });
-Route::get('/cek', function () {
-    return view ('backend.table_user');
+Route::get('/tableuser', function () {
+    return view ('admin.table_user');
+});
+Route::get('/tableadmin', function () {
+    return view ('admin.table_admin');
+});
+Route::get('/tabledokter', function () {
+    return view ('admin.table_dokter');
+});
+Route::get('/tablepanduan', function () {
+    return view ('admin.table_panduan');
 });
 
+Route::get('/tableparamedik', function () {
+    return view ('admin.table_paramedik');
+});
+
+Route::get('/tablekonsultasi', function () {
+    return view ('admin.table_konsultasi');
+});
+/*------------------------ End Route Admin ------------------------ */
+// Route::get('/dashboarddokter', function () {
+//     return view ('dokter.dashboard');
+// });
+/*------------------------ Route Dokter ------------------------ */
+Route::get('/dashboarddokter', function () {
+    return view ('dokter.dashboard_dokter');
+});
+Route::get('/panduantable', function () {
+    return view ('dokter.panduan_table');
+});
+Route::get('/paramediktable', function () {
+    return view ('dokter.paramedik_table');
+});
+Route::get('/konsultasitable', function () {
+    return view ('dokter.konsultasi_table');
+});
+/*------------------------ End Route Dokter ------------------------ */
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
