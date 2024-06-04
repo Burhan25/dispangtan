@@ -15,11 +15,11 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role == 'admin') {
+        if (auth()->user()->role == 'dokter') {
             return $next($request);
         }
 
-        return redirect('dokter.')->with('error', "You don't have admin access.");
+        return redirect('user.')->with('error', "You don't have admin access.");
     }
 
 }

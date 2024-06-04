@@ -8,19 +8,19 @@
 		<meta name="description" content="">
 		<meta name='copyright' content=''>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
+
 		<!-- Title -->
         <title>Dispangtan Kabupaten Sragen </title>
-		
+
 		<!-- Favicon -->
         <link rel="icon" href="{{ asset('frontend/img/logo_srg.png')}}">
-		
+
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css')}}">
-		
+
 		<!-- Medipro CSS -->
         <link rel="stylesheet" href="{{ asset('frontend/css/normalize.css')}}">
         <link rel="stylesheet" href="{{ asset('frontend/style.css')}}">
@@ -28,10 +28,10 @@
 
 		<!-- File PDF CSS -->
 		<link rel="stylesheet" href="{{ asset('frontend/css/panduan.css') }}">
-		
+
     </head>
     <body>
-		
+
 		<!-- Header Area -->
 		<header class="header" >
 			<!-- Topbar -->
@@ -55,7 +55,7 @@
 									<a href="/home"><img src="{{ asset('frontend/img/logo.jpg')}}" alt="#"></a>
 								</div>
 								<!-- End Logo -->
-								
+
 								<!-- Mobile Nav -->
 								<div class="mobile-nav"></div>
 								<!-- End Mobile Nav -->
@@ -90,7 +90,7 @@
 			<!--/ End Header Inner -->
 		</header>
 		<!-- End Header Area -->
-		
+
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs overlay">
 			<div class="container">
@@ -135,7 +135,6 @@
 			</div>
 		  </div>
 		<!-- End Breadcrumbs -->
-		
+
 	</body>
 </html>
-		
