@@ -76,10 +76,14 @@
                                  <div class="main-menu">
                                     <nav class="navigation">
                                         <ul class="nav menu">
-                                            <li class="active"><a href="/home">Home</a></li>
-                                            <li><a href="/panduan">Panduan </a></li>
-                                            <li><a href="/paramedik">Paramedik Veteriner</a></li>
-                                            <li><a href="/blog">Blog</a></li>
+                                            <li><a href="/home">Home</a>
+                                            </li>
+                                            <li><a href="/panduan">Panduan </a>
+                                            </li>
+                                            <li class="active"><a href="/paramedik">Paramedik Veteriner</a>
+                                            </li>
+                                            <li><a href="/blog">Blog</a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
