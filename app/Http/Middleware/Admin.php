@@ -19,7 +19,7 @@ class Admin
             return $next($request);
         }
 
-        return redirect('dokter.')->with('error', "You don't have admin access.");
+        return redirect()->route('dokter.dashboard')->with('error', "You don't have admin access.");
     }
 
 }

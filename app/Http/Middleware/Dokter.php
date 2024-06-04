@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Dokter
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class Admin
             return $next($request);
         }
 
-        return redirect('user.')->with('error', "You don't have admin access.");
+        return redirect('/')->with('error', "You don't have admin access.");
     }
 
 }

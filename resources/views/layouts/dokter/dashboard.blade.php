@@ -92,8 +92,11 @@
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Keluar</h6>
                 </li>
+                <form action="{{route('logout')}}" method="POST" id="logout">
+                    @csrf
+                </form>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('/loginfoms') }}">
+                    <a class="nav-link" href="#" onclick="logout()">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -247,13 +250,12 @@
             @yield('content')
         </div>
     </main>
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="fa fa-cog py-2"> </i>
-        </a>
-        <div class="card shadow-lg ">
-            <div class="card-header pb-0 pt-3 ">
-              
+    <script>
+        function logout(){
+            const form = document.getElementById("logout");
+            form.submit();
+        }
+    </script>
 </body>
 
 </html>
