@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\DokterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PanduanController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,21 +20,21 @@ use App\Http\Controllers\Admin\PanduanController;
 Route::resource('panduans', PanduanController::class);
 /*------------------------ Route Auth ------------------------ */
 
-Route::prefix('admin')->group(function () {
+// Route::prefix('admin')->group(function () {
 
-    Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
+//     Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
 
-    Route::get('login/owner', [AdminController::class, 'Login'])->name('admin.login');
+//     Route::get('login/owner', [AdminController::class, 'Login'])->name('admin.login');
 
-    Route::get('dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard');
-});
+//     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard');
+// });
 
 
 /*------------------------ End Route Auth ------------------------ */
 
 /*------------------------ Route User ------------------------ */
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
 Route::get('/home', function () {
     return view('frontend.home');
@@ -57,9 +60,10 @@ Route::get('/loginfoms', function () {
 Route::get('/registerfoms', function () {
     return view('login.register');
 });
+
 /*------------------------ End Route Login & Register ------------------------ */
 
-Route::prefix('/dokter')->name('dokter.')->group(function () {
+Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function () {
     Route::get('/', function () {
         return view('dokter.index');
     })->name('dashboard');
@@ -81,14 +85,12 @@ Route::prefix('/dokter')->name('dokter.')->group(function () {
 });
 
 // ADMIN //
-Route::prefix('/admin')->name('admin.')->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () {
     Route::get('/', function () {
-        return view('admin.index');
+        return redirect()->route('admin.dokter.list');
     })->name('dashboard');
     Route::prefix('/dokter')->name('dokter.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.dokter.index');
-        })->name('list');
+        Route::get('/', [DokterController::class, 'index'])->name('list');
     });
     Route::prefix('/user')->name('user.')->group(function () {
         Route::get('/', function () {
@@ -110,6 +112,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             return view('admin.konsultasi.index');
         })->name('list');
     });
+
 });
 // /*------------------------ Route Admin ------------------------ */
 // Route::get('/dashboardadmin', function () {
