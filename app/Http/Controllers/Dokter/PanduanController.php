@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dokter;
 
 use App\Http\Controllers\Controller;
+use App\Models\Panduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PanduanController extends Controller
 {
@@ -12,54 +14,62 @@ class PanduanController extends Controller
      */
     public function index()
     {
-        //
+        $panduans = Panduan::all();
+        return view('dokter.panduan.index', compact('panduans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('dokter.panduan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        $path = $request->file('file')->store('panduans', 'public');
+
+        Panduan::create([
+            'title' => $request->title,
+            'file' => $path,
+        ]);
+
+        return redirect()->route('dokter.panduan.list')->with('success', 'Panduan created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Panduan $panduan)
     {
-        //
+        return view('dokter.panduan.edit', compact('panduan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Panduan $panduan)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'file' => 'mimes:pdf|max:2048',
+        ]);
+
+        $path = $panduan->file;
+        if ($request->hasFile('file')) {
+            Storage::disk('public')->delete($panduan->file);
+            $path = $request->file('file')->store('panduans', 'public');
+        }
+
+        $panduan->update([
+            'title' => $request->title,
+            'file' => $path,
+        ]);
+
+        return redirect()->route('dokter.panduan.list')->with('success', 'Panduan updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Panduan $panduan)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Storage::disk('public')->delete($panduan->file);
+        $panduan->delete();
+        return redirect()->route('dokter.panduan.list')->with('success', 'Panduan deleted successfully.');
     }
 }

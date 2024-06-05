@@ -1,14 +1,13 @@
-<!-- resources/views/admin/panduan/edit.blade.php -->
 
-@extends('layouts.admin.dashboard')
+@extends('layouts.dokter.dashboard')
 
 @section('title', 'Edit Panduan')
 
 @section('content')
-    <h1>Edit Panduan</h1>
+
     <div class="container mt-5">
         <h1 class="mb-4">Edit Panduan</h1>
-        <form action="{{ route('admin.panduan.update', $panduan) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('dokter.panduan.update', $panduan) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>

@@ -17,7 +17,7 @@ class PanduanController extends Controller
 
     public function create()
     {
-        return view('panduan.index');
+        return view('admin.panduan.create');
     }
 
     public function store(Request $request)
@@ -34,12 +34,12 @@ class PanduanController extends Controller
             'file' => $path,
         ]);
 
-        return redirect()->route('panduan.index');
+        return redirect()->route('admin.panduan.list')->with('success', 'Panduan created successfully.');
     }
 
     public function edit(Panduan $panduan)
     {
-        return view('panduan.edit', compact('panduan'));
+        return view('admin.panduan.edit', compact('panduan'));
     }
 
     public function update(Request $request, Panduan $panduan)
@@ -60,13 +60,13 @@ class PanduanController extends Controller
             'file' => $path,
         ]);
 
-        return redirect()->route('panduan.index');
+        return redirect()->route('admin.panduan.list')->with('success', 'Panduan updated successfully.');
     }
 
     public function destroy(Panduan $panduan)
     {
         Storage::disk('public')->delete($panduan->file);
         $panduan->delete();
-        return redirect()->route('panduan.index');
+        return redirect()->route('admin.panduan.list')->with('success', 'Panduan deleted successfully.');
     }
 }

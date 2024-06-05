@@ -5,34 +5,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PanduanController;
+use App\Http\Controllers\Dokter\PanduanController as DokterPanduanController;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-Route::resource('panduans', PanduanController::class);
-/*------------------------ Route Auth ------------------------ */
-
-// Route::prefix('admin')->group(function () {
-
-//     Route::get('/login', [AdminController::class, 'Index'])->name('login_form');
-
-//     Route::get('login/owner', [AdminController::class, 'Login'])->name('admin.login');
-
-//     Route::get('/dashboard', [AdminController::class, 'Dashboard'])->name('admin.dashboard');
-// });
 
 
-/*------------------------ End Route Auth ------------------------ */
 
 /*------------------------ Route User ------------------------ */
+
 Route::get('/', function () {
     return view('frontend.home');
 });
@@ -64,14 +44,18 @@ Route::get('/registerfoms', function () {
 /*------------------------ End Route Login & Register ------------------------ */
 
 Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function () {
-    Route::get('/', function () {
-        return view('dokter.index');
+    Route::get('/', function () { 
+        return redirect()->route('dokter.panduan.list');
     })->name('dashboard');
     Route::prefix('/panduan')->name('panduan.')->group(function () {
-        Route::get('/', function () {
-            return view('dokter.panduan.index');
-        })->name('list');
+        Route::get('/', [DokterPanduanController::class, 'index'])->name('list');
+        Route::get('/create', [DokterPanduanController::class, 'create'])->name('create');
+        Route::post('/store', [DokterPanduanController::class, 'store'])->name('store');
+        Route::get('/{panduan}/edit', [DokterPanduanController::class, 'edit'])->name('edit');
+        Route::post('/{panduan}/update', [DokterPanduanController::class, 'update'])->name('update');
+        Route::delete('/{panduan}/delete', [DokterPanduanController::class, 'destroy'])->name('delete');
     });
+
     Route::prefix('/paramedik')->name('paramedik.')->group(function () {
         Route::get('/', function () {
             return view('dokter.paramedik.index');
@@ -98,10 +82,16 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
         })->name('list');
     });
     Route::prefix('/panduan')->name('panduan.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.panduan.index');
-        })->name('list');
+        Route::get('/', [PanduanController::class, 'index'])->name('list');
+        Route::get('/create', [PanduanController::class, 'create'])->name('create');
+        Route::post('/store', [PanduanController::class, 'store'])->name('store');
+        Route::get('/{panduan}/edit', [PanduanController::class, 'edit'])->name('edit');
+        Route::post('/{panduan}/update', [PanduanController::class, 'update'])->name('update');
+        Route::delete('/{panduan}/delete', [PanduanController::class, 'destroy'])->name('delete');
     });
+
+
+
     Route::prefix('/paramedik')->name('paramedik.')->group(function () {
         Route::get('/', function () {
             return view('admin.paramedik.index');
@@ -112,8 +102,8 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
             return view('admin.konsultasi.index');
         })->name('list');
     });
-
 });
+
 // /*------------------------ Route Admin ------------------------ */
 // Route::get('/dashboardadmin', function () {
 //     return view ('admin.dashboard');

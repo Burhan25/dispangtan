@@ -10,17 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('panduans', function (Blueprint $table) {
-        $table->id();
-        $table->string('title');
-        $table->string('file');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('panduans', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('file');
+            $table->timestamps();
+        });
+    }
 
-public function down()
-{
-    Schema::dropIfExists('panduans');
-}
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::dropIfExists('panduans');
+    }
 };

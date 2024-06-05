@@ -15,11 +15,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role == 'admin') {
-            return $next($request);
+        if (isset(auth()->user()->role)) {
+            if (auth()->user()->role == 'admin') {
+                return $next($request);
+            }
         }
 
         return redirect()->route('dokter.dashboard')->with('error', "You don't have admin access.");
     }
-
 }
