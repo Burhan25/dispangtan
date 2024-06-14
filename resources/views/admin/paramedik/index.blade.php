@@ -4,7 +4,7 @@
 @section('content')
     <div class="container mt-5">
         <h4>Manajemen Kecamatan</h4>
-        <a href="{{ route('admin.paramedik.create') }}" class="btn btn-primary mb-3">Tambah Kecamatan</a>
+        <a href="{{ route('admin.paramedik.kecamatan.create') }}" class="btn btn-primary mb-3">Tambah Kecamatan</a>
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -21,13 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kecamatans as $kecamatan)
+                @foreach ($kecamatan as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $kecamatan->nama }}</td>
-                        <td>
-                            <form action="{{ route('admin.paramedik.delete', $kecamatan->id) }}" method="POST">
-                                <a class="btn btn-primary" href="{{ route('admin.paramedik.edit', $kecamatan->id) }}">Edit</a>
+                        <td>{{ $item->nama }}</td>
+                        <td class="d-flex gap-3">
+                            <a class="btn btn-primary"
+                                href="{{ route('admin.paramedik.kecamatan.edit', $item->id) }}">Edit</a>
+                            <form action="{{ route('admin.paramedik.kecamatan.delete', $item->id) }}" method="POST">
 
                                 @csrf
                                 @method('DELETE')
@@ -58,25 +59,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($dokterParamediks as $dokterParamedik)
+                @foreach ($paramedik as $item)
                     <tr>
                         <td>
-                            @if ($dokterParamedik->foto)
-                                <img src="{{ asset('images/' . $dokterParamedik->foto) }}" alt="Foto Paramedik"
-                                    width="50">
+                            @if ($item->foto)
+                                <img src="{{ asset('images/' . $item->foto) }}" alt="Foto Paramedik" width="50">
                             @else
                                 Tidak ada foto
                             @endif
                         </td>
-                        <td>{{ $dokterParamedik->nama }}</td>
-                        <td>{{ $dokterParamedik->spesialis }}</td>
-                        <td>{{ $dokterParamedik->domisili }}</td>
-                        <td>{{ $dokterParamedik->nomor_str }}</td>
-                        <td>{{ $dokterParamedik->nomor_whatsapp }}</td>
-                        <td>
-                            <a href="{{ route('admin.paramedik.edit', $dokterParamedik->id) }}"
-                                class="btn btn-warning">Edit</a>
-                            <form action="{{ route('admin.paramedik.destroy', $dokterParamedik->id) }}" method="POST"
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->spesialis }}</td>
+                        <td>{{ $item->domisiliId->nama }}</td>
+                        <td>{{ $item->nomor_str }}</td>
+                        <td>{{ $item->nomor_whatsapp }}</td>
+                        <td class="d-flex gap-3">
+                            <a href="{{ route('admin.paramedik.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('admin.paramedik.delete', $item->id) }}" method="POST"
                                 style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')

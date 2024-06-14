@@ -2,35 +2,12 @@
 @section('title', 'Create Data')
 
 @section('content')
-<div class="container mt-5">
-    <!-- Tambah Kecamatan Section -->
-    <h1>Tambah Kecamatan</h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{ route('admin.paramedik.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="nama">Input Kecamatan</label>
-            <input type="text" name="nama" class="form-control" placeholder="Nama Kecamatan">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
 
 <div class="container mt-5">
     <!-- Tambah Paramedik Section -->
     <h2>Tambah Paramedik</h2>
 
-    <form action="{{ route('admin.paramedik.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.paramedik.create.post') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="foto">Foto</label>
@@ -46,7 +23,11 @@
         </div>
         <div class="form-group">
             <label for="domisili">Domisili</label>
-            <input type="text" class="form-control" name="domisili" required>
+            <select class="form-select" name="domisili" id="domisili" required>
+                @foreach ($kecamatan as $item)
+                <option value="{{$item->id}}">{{$item->nama}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="nomor_str">Nomor STR</label>

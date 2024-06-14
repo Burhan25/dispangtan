@@ -1,131 +1,82 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\DokterParamedik;
+
 use App\Http\Controllers\Controller;
+use App\Models\DokterParamedik;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class ParamedikController extends Controller
 {
-    // public function index()
-    // {
-    //     $kecamatans = Kecamatan::all();
-    //     return view('admin.paramedik.index', compact('kecamatans'));
-    // }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $kecamatan = Kecamatan::all();
+        $paramedik = DokterParamedik::with('domisiliId')->get();
 
+        return view('admin.paramedik.index', compact('kecamatan', 'paramedik'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('admin.paramedik.create');
+        $kecamatan = Kecamatan::all();
+        return view('admin.paramedik.create', compact('kecamatan'));
+
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-        ]);
+        DokterParamedik::query()->create($request->all());
 
-        Kecamatan::create($request->all());
-        return redirect()->route('admin.paramedik.list')->with('success', 'Kecamatan berhasil ditambahkan');
+        return redirect()->route('admin.paramedik.list')->with('success', 'Dokter paramedik created successfully.');
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $kecamatan = Kecamatan::find($id);
-        return view('admin.paramedik.edit', compact('kecamatan'));
+        //
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-        ]);
-
-        $kecamatan = Kecamatan::find($id);
-        $kecamatan->update($request->all());
-        return redirect()->route('admin.paramedik.list')->with('success', 'Kecamatan berhasil diupdate');
+        $paramedik = DokterParamedik::findOrFail($id);
+        $kecamatan = Kecamatan::all();
+        return view('admin.paramedik.edit', compact('kecamatan','paramedik'));
     }
 
-    public function destroy($id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
-        $kecamatan = Kecamatan::find($id);
-        $kecamatan->delete();
-        return redirect()->route('admin.paramedik.list')->with('success', 'Kecamatan berhasil dihapus');
-    }
-// Methods for DokterParamedik
-public function index()
-{
-    $dokterParamediks = DokterParamedik::all();
-    $kecamatans = Kecamatan::all();
-    return view('admin.paramedik.index', compact('dokterParamediks', 'kecamatans'));
-}
+        $paramedik = DokterParamedik::find($id);
+        $paramedik->update($request->all());
 
-public function createDokterParamedik()
-{
-    return view('admin.paramedik.create');
-}
-
-public function storeDokterParamedik(Request $request)
-{
-    $request->validate([
-        'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'nama' => 'required|string|max:255',
-        'spesialis' => 'required|string|max:255',
-        'domisili' => 'required|string|max:255',
-        'nomor_whatsapp' => 'required|string|max:15',
-    ]);
-
-    if ($request->hasFile('foto')) {
-        $imageName = time().'.'.$request->foto->extension();  
-        $request->foto->move(public_path('images'), $imageName);
-    } else {
-        $imageName = null;
+        return redirect()->route('admin.paramedik.list')->with('success', 'Dokter paramedik updated successfully.');
     }
 
-    DokterParamedik::create([
-        'foto' => $imageName,
-        'nama' => $request->nama,
-        'spesialis' => $request->spesialis,
-        'domisili' => $request->domisili,
-        'nomor_str' => $request->nomor_str,
-        'nomor_whatsapp' => $request->nomor_whatsapp,
-    ]);
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $paramedik = DokterParamedik::find($id);
+        $paramedik->delete();
 
-    return redirect()->route('admin.paramedik.index')->with('success', 'Paramedik berhasil ditambahkan');
-}
-
-public function editDokterParamedik($id)
-{
-    $dokterParamedik = DokterParamedik::find($id);
-    return view('admin.paramedik.edit', compact('dokterParamedik'));
-}
-
-public function updateDokterParamedik(Request $request, $id)
-{
-    $request->validate([
-        'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'nama' => 'required|string|max:255',
-        'spesialis' => 'required|string|max:255',
-        'domisili' => 'required|string|max:255',
-        'nomor_whatsapp' => 'required|string|max:15',
-    ]);
-
-    $dokterParamedik = DokterParamedik::find($id);
-
-    if ($request->hasFile('foto')) {
-        $imageName = time().'.'.$request->foto->extension();  
-        $request->foto->move(public_path('images'), $imageName);
-        $dokterParamedik->foto = $imageName;
+        return redirect()->route('admin.paramedik.list')->with('success', 'Dokter paramedik deleted successfully.');
     }
-
-    $dokterParamedik->update($request->all());
-    return redirect()->route('admin.paramedik.index')->with('success', 'Paramedik berhasil diupdate');
-}
-
-public function destroyDokterParamedik($id)
-{
-    $dokterParamedik = DokterParamedik::find($id);
-    $dokterParamedik->delete();
-    return redirect()->route('admin.paramedik.index')->with('success', 'Paramedik berhasil dihapus');
-}
 }
