@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DokterController;
+use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -43,10 +44,10 @@ Route::get('/registerfoms', function () {
 
 /*------------------------ Route Dokter ------------------------ */
 Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function () {
-    Route::get('/', function () { 
+    Route::get('/', function () {
         return redirect()->route('dokter.panduan.list');
     })->name('dashboard');
-    
+
     Route::prefix('/panduan')->name('panduan.')->group(function () {
         Route::get('/', [DokterPanduanController::class, 'index'])->name('list');
         Route::get('/create', [DokterPanduanController::class, 'create'])->name('create');
@@ -62,7 +63,7 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
         Route::post('/store', [DokterParamedikController::class, 'store'])->name('store');
         Route::get('/{lokasi}/edit', [DokterParamedikController::class, 'edit'])->name('edit');
         Route::post('/{lokasi}/update', [DokterParamedikController::class, 'update'])->name('update');
-        Route::delete('/{lokasi}/delete', [DokterParamedikController::class, 'destroy'])->name('delete'); 
+        Route::delete('/{lokasi}/delete', [DokterParamedikController::class, 'destroy'])->name('delete');
     });
 
     Route::prefix('/konsultasi')->name('konsultasi.')->group(function () {
@@ -98,23 +99,20 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
         Route::delete('/{panduan}/delete', [PanduanController::class, 'destroy'])->name('delete');
     });
 
-    Route::prefix('/kecamatan-paramedik')->name('paramedik.')->group(function () {
-       Route::get('/', [ParamedikController::class, 'index'])->name('list');
-       Route::get('/create', [ParamedikController::class, 'create'])->name('create');
-       Route::post('/store', [ParamedikController::class, 'store'])->name('store');
-       Route::get('/show-lokasi', [ParamedikController::class, 'show-loasi'])->name('show');
-       Route::get('/edit/{id}', [ParamedikController::class, 'edit'])->name('edit');
-       Route::post('/update/{id}', [ParamedikController::class, 'update'])->name('update');
-       Route::delete('/delete{id}', [ParamedikController::class, 'destroy'])->name('delete');
-    });
-
-    Route::prefix('/dokter-paramedik')->name('dokter-paramedik.')->group(function () {
-        // Route::get('/', [ParamedikController::class, 'indexDokterParamedik'])->name('list');
-        Route::get('/create', [ParamedikController::class, 'create'])->name('create');
-        Route::post('/store', [ParamedikController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [ParamedikController::class, 'edit'])->name('edit');
-        Route::post('/update{id}', [ParamedikController::class, 'update'])->name('update');
-        Route::delete('/{lokasi}/delete', [ParamedikController::class, 'destroy'])->name('delete');
+    Route::prefix('/paramedik')->name('paramedik.')->group(function () {
+        Route::prefix('/kecamatan')->name('kecamatan.')->group(function () {
+            Route::get('/create', [KecamatanController::class, 'create'])->name('create');
+            Route::post('/create', [KecamatanController::class, 'store'])->name('create.post');
+            Route::get('/edit/{id}', [KecamatanController::class, 'edit'])->name('edit');
+            Route::put('/edit/{id}', [KecamatanController::class, 'update'])->name('edit.post');
+            Route::delete('/edit/{id}', [KecamatanController::class, 'destroy'])->name('delete');
+        });
+        Route::get('/list', [ParamedikController::class, 'index'])->name('list');
+        Route::get('/list/create', [ParamedikController::class, 'create'])->name('create');
+        Route::post('/list/create', [ParamedikController::class, 'store'])->name('create.post');
+        Route::get('/list/edit/{id}', [ParamedikController::class, 'edit'])->name('edit');
+        Route::put('/list/edit/{id}', [ParamedikController::class, 'update'])->name('edit.post');
+        Route::delete('/list/edit/{id}', [ParamedikController::class, 'destroy'])->name('delete');
     });
 
     Route::prefix('/konsultasi')->name('konsultasi.')->group(function () {

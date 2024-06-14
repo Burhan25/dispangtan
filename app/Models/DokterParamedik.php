@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DokterParamedik extends Model
 {
@@ -16,4 +17,9 @@ class DokterParamedik extends Model
         'nomor_str',
         'nomor_whatsapp',
     ];
+
+    function domisiliId(): BelongsTo
+    {
+        return $this->belongsTo(Kecamatan::class, 'domisili', 'id');
+    }
 }
