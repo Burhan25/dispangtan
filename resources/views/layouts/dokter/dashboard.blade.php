@@ -55,7 +55,7 @@
                                     d="m11.997 14l3.35-3.289a2.129 2.129 0 0 0 0-3.069a2.225 2.225 0 0 0-3.126 0l-.224.218l-.224-.219a2.224 2.224 0 0 0-3.125 0a2.129 2.129 0 0 0 0 3.069z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Management Panduan</span>
+                        <span class="nav-link-text ms-1">Menejemen Panduan</span>
                     </a>
                 </li>
                 </li>
@@ -68,7 +68,7 @@
                                     d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Management Paramedik</span>
+                        <span class="nav-link-text ms-1">Menejemen Paramedik</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -85,7 +85,7 @@
                                 <path fill="none" d="M0 0h36v36H0z" />
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Management Konsultasi</span>
+                        <span class="nav-link-text ms-1">Menejemen Konsultasi</span>
                     </a>
                 </li>
                 </li>
@@ -127,7 +127,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark"
-                                href="javascript:;">Pages</a></li>
+                                href="javascript:;">Dokter</a></li>
                         <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
                     </ol>
                     <h6 class="font-weight-bolder mb-0">@yield('title')</h6>

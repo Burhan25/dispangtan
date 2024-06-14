@@ -80,7 +80,7 @@
 										<ul class="nav menu">
 											<li><a href="/home">Home</a>
 											</li>
-											<li><a href="/panduan">Panduan </a></li>
+											<li><a href="/client-panduan">Panduan </a></li>
 											<li><a href="/paramedik">Paramedik Veteriner</a>
 											</li>
 											<li class="active"><a href="/blog">Blog</a>

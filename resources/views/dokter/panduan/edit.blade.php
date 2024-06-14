@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="container mt-5">
-        <h1 class="mb-4">Edit Panduan</h1>
+        <h4 class="mb-4">Edit Panduan</h4>
         <form action="{{ route('dokter.panduan.update', $panduan) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

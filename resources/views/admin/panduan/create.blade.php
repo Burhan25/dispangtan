@@ -1,5 +1,3 @@
-<!-- resources/views/admin/panduan/create.blade.php -->
-
 @extends('layouts.admin.dashboard')
 
 @section('title', 'Create Panduan')
@@ -10,11 +8,11 @@
     <form action="{{ route('admin.panduan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Masukan Judul File</label>
             <input type="text" name="title" id="title" class="form-control">
         </div>
         <div class="form-group">
-            <label for="file">File</label>
+            <label for="file">Upload File</label>
             <input type="file" name="file" id="file" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

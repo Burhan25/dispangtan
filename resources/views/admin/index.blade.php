@@ -1,5 +1,4 @@
-
-@extends('layouts.admin.dashboard')
+{{-- @extends('layouts.admin.dashboard')
 @section('content')
-    <h1>Dashboard Dokter</h1>
-@endsection
+    <h4>Dashboard Dokter</h4>
+@endsection --}}

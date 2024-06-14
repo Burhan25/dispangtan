@@ -1,21 +1,17 @@
-<!-- resources/views/admin/panduan/index.blade.php -->
-
 @extends('layouts.admin.dashboard')
-
 @section('title', 'Table Panduan')
-
 @section('content')
-    <h1>Table Management Panduan</h1>
+    <h4>Menejemen Panduan</h4>
     <div class="container mt-5">
-        <a href="{{ route('admin.panduan.create') }}" class="btn btn-primary mb-3">Create New Panduan</a>
+        <a href="{{ route('admin.panduan.create') }}" class="btn btn-primary mb-3">Tambahkan Panduan</a>
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-        <table class="table table-bordered">
+        <table class="table border">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Judul</th>
                     <th>File</th>
                     <th>Actions</th>
                 </tr>

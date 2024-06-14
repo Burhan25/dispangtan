@@ -315,3 +315,13 @@ button:hover {
         cursor: pointer;
     }
 }
+
+.dropdown {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.dropdown-toggle i {
+    margin-right: 8px; /* Adjust the space as needed */
+}

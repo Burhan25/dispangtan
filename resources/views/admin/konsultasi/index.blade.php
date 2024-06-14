@@ -1,5 +1,5 @@
 @section('title', 'Table Konsultasi')
 @extends('layouts.admin.dashboard')
 @section('content')
-    <h1>Table Management Admin</h1>
+    <h4>Manajemen Admin</h4>
 @endsection

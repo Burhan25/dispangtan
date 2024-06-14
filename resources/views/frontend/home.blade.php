@@ -102,7 +102,7 @@
                                     <ul class="nav menu">
                                         <li class="active"><a href="/home">Home</a>
                                         </li>
-                                        <li><a href="/panduan">Panduan </a></li>
+                                        <li><a href="/client-panduan">Panduan </a></li>
                                         <li><a href="/paramedik">Paramedik Veteriner</a>
                                         </li>
                                         <li><a href="/blog">Blog</a>
@@ -485,7 +485,7 @@
     <!-- End Blog Area -->
 
     <!-- Start clients -->
-    <div class="clients overlay">
+    {{-- <div class="clients overlay">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
@@ -521,7 +521,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--/Ens clients -->
 
     <!-- Start Appointment -->

@@ -5,7 +5,7 @@
 @section('title', 'Table Panduan')
 
 @section('content')
-    <h1>Table Management Panduan</h1>
+    <h4>Manajemen Panduan</h4>
     <div class="container mt-5">
         <a href="{{ route('dokter.panduan.create') }}" class="btn btn-primary mb-3">Create New Panduan</a>
         @if (session('success'))

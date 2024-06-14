@@ -1,5 +1,5 @@
 @section('title', 'Table Konsultasi')
 @extends('layouts.dokter.dashboard')
 @section('content')
-    <h1>Table Management Konsultasi</h1>
+    <h4>Manajemen Konsultasi</h4>
 @endsection

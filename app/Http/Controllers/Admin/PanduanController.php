@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Panduan;
 use Illuminate\Support\Facades\Storage;
 
+
 class PanduanController extends Controller
 {
     public function index()
@@ -14,7 +15,14 @@ class PanduanController extends Controller
         $panduans = Panduan::all();
         return view('admin.panduan.index', compact('panduans'));
     }
+    public function indexClient()
+    {
+        $panduans = Panduan::all();
+        // dd($panduans);
+        return view('frontend.panduan', compact('panduans'));
+    }
 
+    
     public function create()
     {
         return view('admin.panduan.create');
@@ -70,3 +78,6 @@ class PanduanController extends Controller
         return redirect()->route('admin.panduan.list')->with('success', 'Panduan deleted successfully.');
     }
 }
+
+
+
