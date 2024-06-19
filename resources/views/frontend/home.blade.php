@@ -103,7 +103,7 @@
                                         <li class="active"><a href="/home">Home</a>
                                         </li>
                                         <li><a href="/client-panduan">Panduan </a></li>
-                                        <li><a href="/paramedik">Paramedik Veteriner</a>
+                                        <li><a href="/client-paramedik">Paramedik Veteriner</a>
                                         </li>
                                         <li><a href="/blog">Blog</a>
                                     </ul>

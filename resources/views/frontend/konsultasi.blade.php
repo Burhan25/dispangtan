@@ -83,7 +83,7 @@
 											</li>
 											<li><a href="/client-panduan">Panduan</a>
 											</li>
-											<li><a href="/paramedik">Paramedik Veteriner</a>
+											<li><a href="/client-paramedik">Paramedik Veteriner</a>
 											</li>
 											<li><a href="/blog">Blog</a>
 											</li>
@@ -123,24 +123,11 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
-		
-		<!doctype html>
-<html class="no-js" lang="zxx">
-    <head>
-        <!-- Meta Tags -->
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="keywords" content="Site keywords here">
-		<meta name="description" content="">
-		<meta name='copyright' content=''>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
 		<!-- Title -->
         <title>Dispangtan Kabupaten Sragen </title>
 		<link
 		rel="stylesheet"
-		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-	  />
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 		<!-- Favicon -->
         <link rel="icon" href="{{ asset('frontend/img/logo_srg.png')}}">
 		
@@ -175,9 +162,6 @@
 		
     </head>
     <body>
-		
-		<!-- Header Area -->
-		<!-- End Header Area -->
 		<div class="dropdown mt-3 " style="justify-content: left; display: flex; ">
 			<button  class=" dropdown-toggle  " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
 			  Pilih Layanan Konsultasi
@@ -189,8 +173,6 @@
 			  <li><a class="dropdown-item" href="#">Layanan Konsultasi Hewan Kambing</a></li>
 			</ul>
 		  </div>
-		
-		
 	<div class="container-card" >
 		<div class="game-card">
 			<div class="game-card-content">

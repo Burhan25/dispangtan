@@ -18,7 +18,7 @@ class DokterParamedik extends Model
         'nomor_whatsapp',
     ];
 
-    function domisiliId(): BelongsTo
+    Public function domisiliId(): BelongsTo
     {
         return $this->belongsTo(Kecamatan::class, 'domisili', 'id');
     }

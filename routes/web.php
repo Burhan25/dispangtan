@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DokterController;
 use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ShowParamedikController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PanduanController;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\ShowPanduanController;
 use App\Http\Controllers\Admin\ParamedikController;
 use App\Http\Controllers\Dokter\ParamedikController as DokterParamedikController;
+use App\Http\Controllers\Dokter\KecamatanController as DokterKecamatanController;
+use App\Http\Middleware\Dokter;
 
 /*------------------------ Route User ------------------------ */
 
@@ -21,9 +24,9 @@ Route::get('/home', function () {
     return view('frontend.home');
 });
 Route::get('/client-panduan', [ShowPanduanController::class, 'showUserPanduans'])->name('user.panduan');
-
-Route::get('/paramedik', function () {
-    return view('frontend.paramedik');
+Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
+Route::get('/chat-konsultasi', function () {
+    return view('frontend.chat-konsultasi');
 });
 Route::get('/blog', function () {
     return view('frontend.blog');
@@ -57,14 +60,24 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
         Route::delete('/{panduan}/delete', [DokterPanduanController::class, 'destroy'])->name('delete');
     });
 
-    Route::prefix('/kecamatan-paramedik')->name('paramedik.')->group(function () {
-        Route::get('/', [DokterParamedikController::class, 'index'])->name('list');
-        Route::get('/create', [DokterParamedikController::class, 'create'])->name('create');
-        Route::post('/store', [DokterParamedikController::class, 'store'])->name('store');
-        Route::get('/{lokasi}/edit', [DokterParamedikController::class, 'edit'])->name('edit');
-        Route::post('/{lokasi}/update', [DokterParamedikController::class, 'update'])->name('update');
-        Route::delete('/{lokasi}/delete', [DokterParamedikController::class, 'destroy'])->name('delete');
+    Route::prefix('/paramedik')->name('paramedik.')->group(function () {
+        Route::prefix('/kecamatan')->name('kecamatan.')->group(function () {
+            Route::get('/create', [DokterKecamatanController::class, 'create'])->name('create');
+            Route::post('/create', [DokterKecamatanController::class, 'store'])->name('create.post');
+            Route::get('/edit/{id}', [DokterKecamatanController::class, 'edit'])->name('edit');
+            Route::put('/edit/{id}', [DokterKecamatanController::class, 'update'])->name('edit.post');
+            Route::delete('/edit/{id}', [DokterKecamatanController::class, 'destroy'])->name('delete');
+        });
+        Route::get('/list', [DokterParamedikController::class, 'index'])->name('list');
+        Route::get('/list/create', [DokterParamedikController::class, 'create'])->name('create');
+        Route::post('/list/create', [DokterParamedikController::class, 'store'])->name('create.post');
+        Route::get('/list/edit/{id}', [DokterParamedikController::class, 'edit'])->name('edit');
+        Route::put('/list/edit/{id}', [DokterParamedikController::class, 'update'])->name('edit.post');
+        Route::delete('/list/edit/{id}', [DokterParamedikController::class, 'destroy'])->name('delete');
+
     });
+    
+
 
     Route::prefix('/konsultasi')->name('konsultasi.')->group(function () {
         Route::get('/', function () {

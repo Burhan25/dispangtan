@@ -3,7 +3,7 @@
 @section('title', 'Create Panduan')
 
 @section('content')
-    <h1>Create New Panduan</h1>
+    <h4>Create New Panduan</h4>
     <!-- Form untuk membuat panduan baru -->
     <form action="{{ route('admin.panduan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf

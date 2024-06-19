@@ -26,13 +26,10 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama }}</td>
                         <td class="d-flex gap-3">
-                            <a class="btn btn-primary"
-                                href="{{ route('admin.paramedik.kecamatan.edit', $item->id) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('admin.paramedik.kecamatan.edit', $item->id) }}">Edit</a>
                             <form action="{{ route('admin.paramedik.kecamatan.delete', $item->id) }}" method="POST">
-
                                 @csrf
                                 @method('DELETE')
-
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
@@ -70,17 +67,21 @@
                         </td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->spesialis }}</td>
-                        <td>{{ $item->domisiliId->nama }}</td>
+                        <td>
+                            @if ($item->domisiliId)
+                                {{ $item->domisiliId->nama }}
+                            @else
+                                Tidak ada domisili
+                            @endif
+                        </td>
                         <td>{{ $item->nomor_str }}</td>
                         <td>{{ $item->nomor_whatsapp }}</td>
                         <td class="d-flex gap-3">
                             <a href="{{ route('admin.paramedik.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('admin.paramedik.delete', $item->id) }}" method="POST"
-                                style="display:inline-block;">
+                            <form action="{{ route('admin.paramedik.delete', $item->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus paramedik ini?')">Hapus</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus paramedik ini?')">Hapus</button>
                             </form>
                         </td>
                     </tr>

@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/card-paramedik.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+
 </head>
 
 <body>
@@ -82,14 +83,10 @@
                             <div class="main-menu">
                                 <nav class="navigation">
                                     <ul class="nav menu">
-                                        <li><a href="/home">Home</a>
-                                        </li>
-                                        <li><a href="/client-panduan">Panduan </a>
-                                        </li>
-                                        <li class="active"><a href="/paramedik">Paramedik Veteriner</a>
-                                        </li>
-                                        <li><a href="/blog">Blog</a>
-                                        </li>
+                                        <li><a href="/home">Home</a></li>
+                                        <li><a href="/client-panduan">Panduan</a></li>
+                                        <li class="active"><a href="/paramedik">Paramedik Veteriner</a></li>
+                                        <li><a href="/blog">Blog</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -118,7 +115,7 @@
                         <ul class="bread-list">
                             <li><a href="/home">Home</a></li>
                             <li><i class="icofont-simple-right"></i></li>
-                            <li class="active">Paramedik Veteriner </li>
+                            <li class="active">Paramedik Veteriner</li>
                         </ul>
                     </div>
                 </div>
@@ -126,40 +123,41 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
+
     <!-- Dropdown for Kecamatan -->
     <div class="dropdown mt-3" style="justify-content: left; display: flex;">
-        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="fas fa-map-marker-alt"></i>Pilih Kecamatan
-        </button>
-        <ul class="dropdown-menu w-10" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Layanan Konsultasi Pelayanan Dinas</a></li>
-            <li><a class="dropdown-item" href="#">Layanan Konsultasi Hewan Kucing</a></li>
-            <li><a class="dropdown-item" href="#">Layanan Konsultasi Hewan Sapi</a></li>
-            <li><a class="dropdown-item" href="#">Layanan Konsultasi Hewan Kambing</a></li>
-        </ul>
+        <form action="{{ route('admin.paramedik.list') }}" method="GET">
+            <button class="dropdown-toggle btn btn-primary" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-map-marker-alt"></i> Pilih Kecamatan
+            </button>
+            <ul class="dropdown-menu w-10" aria-labelledby="dropdownMenuButton">
+                @foreach ($kecamatan as $kec)
+                    <li><button type="submit" name="kecamatan_id" value="{{ $kec->id }}"
+                            class="dropdown-item">{{ $kec->name }}</button></li>
+                @endforeach
+            </ul>
+        </form>
     </div>
-
 
     <div class="container-card">
-        <div class="container-card">
+        @foreach ($paramedik as $p)
             <div class="game-card">
                 <div class="game-card-content">
                     <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
+                        <img class="game-card-image" src="{{ asset('images/' . $p->foto) }}" alt="Gambar Game">
                     </div>
                     <div class="description">
                         <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
+                            <h2 class="paramedik-name">{{ $p->nama }}</h2>
+                            <p class="paramedik-info">{{ $p->profession }} ~ {{ $p->spesialis }}</p>
                         </div>
                         <div class="info">
                             <div class="info-item">
                                 <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
                                 <div class="info-text">
                                     <span>Domisili</span>
-                                    <p>Kecamatan Brambang Sragen</p>
+                                    <p>{{ $p->domisiliId->nama }}</p>
                                 </div>
                             </div>
                             <div class="info-item">
@@ -167,188 +165,30 @@
                                     style="font-size: 2rem; padding-right: 20px"></i>
                                 <div class="info-text">
                                     <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
+                                    <p>{{ $p->nomor_str }}</p>
                                 </div>
                             </div>
                         </div>
                         <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
+                            onclick="redirectToWhatsApp('{{ $p->phone }}')">Whatsapp</button>
                     </div>
                 </div>
             </div>
-            <div class="game-card">
-                <div class="game-card-content">
-                    <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
-                    </div>
-                    <div class="description">
-                        <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
-                        </div>
-                        <div class="info">
-                            <div class="info-item">
-                                <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Domisili</span>
-                                    <p>Kecamatan Kedawung Sragen</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
-                    </div>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-content">
-                    <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
-                    </div>
-                    <div class="description">
-                        <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
-                        </div>
-                        <div class="info">
-                            <div class="info-item">
-                                <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Domisili</span>
-                                    <p>Kecamatan Sambungmacan Sragen</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
-                    </div>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-content">
-                    <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
-                    </div>
-                    <div class="description">
-                        <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
-                        </div>
-                        <div class="info">
-                            <div class="info-item">
-                                <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Domisili</span>
-                                    <p>Kecamatan Gemolong Sragen</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
-                    </div>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-content">
-                    <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
-                    </div>
-                    <div class="description">
-                        <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
-                        </div>
-                        <div class="info">
-                            <div class="info-item">
-                                <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Domisili</span>
-                                    <p>Kecamatan Masaran Sragen</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
-                    </div>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-content">
-                    <div class="game-card-image-container">
-                        <img class="game-card-image"
-                            src="{{ asset('frontend/img/img-card-paramedik/Paramedik1.jpg') }}" alt="Gambar Game">
-                    </div>
-                    <div class="description">
-                        <div class="game-title">
-                            <h2>Drh. Toto Sukarno</h2>
-                            <p>Dokter Hewan</p>
-                        </div>
-                        <div class="info">
-                            <div class="info-item">
-                                <i class="bi bi-house-fill" style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Domisili</span>
-                                    <p>Kecamatan Tegal Asri Sragen</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
-                                <div class="info-text">
-                                    <span>Nomor STR</span>
-                                    <p>771xxxxxxxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('628112651934')">Whatsapp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
+    <script>
+        function selectKecamatan(id) {
+            document.getElementById('kecamatanIdInput').value = id;
+            document.getElementById('kecamatanForm').submit();
+        }
+    </script>
     <script>
         function redirectToWhatsApp(phoneNumber) {
             window.location.href = `https://wa.me/${phoneNumber}`;
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

@@ -37,7 +37,6 @@
 </head>
 
 <body>
-
     <!-- Header Area -->
     <header class="header">
         <!-- Topbar -->
@@ -73,7 +72,7 @@
                                     <ul class="nav menu">
                                         <li><a href="/home">Home</a></li>
                                         <li class="active"><a href="/client-panduan">Panduan </a></li>
-                                        <li><a href="/paramedik">Paramedik Veteriner</a></li>
+                                        <li><a href="/client-paramedik">Paramedik Veteriner</a></li>
                                         <li><a href="/blog">Blog</a></li>
                                     </ul>
                                 </nav>
