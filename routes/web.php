@@ -25,6 +25,7 @@ Route::get('/home', function () {
 });
 Route::get('/client-panduan', [ShowPanduanController::class, 'showUserPanduans'])->name('user.panduan');
 Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
+
 Route::get('/chat-konsultasi', function () {
     return view('frontend.chat-konsultasi');
 });

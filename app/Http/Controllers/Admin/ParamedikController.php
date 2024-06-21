@@ -12,8 +12,8 @@ class ParamedikController extends Controller
     public function index(Request $request)
     {
         $kecamatan = Kecamatan::all();
-        $selectedKecamatanId = $request->get('kecamatan_id');
-        
+        $selectedKecamatanId = $request->get('domisili');
+
         if ($selectedKecamatanId) {
             $paramedik = DokterParamedik::where('domisili', $selectedKecamatanId)->with('domisiliId')->get();
         } else {
@@ -22,6 +22,7 @@ class ParamedikController extends Controller
 
         return view('admin.paramedik.index', compact('kecamatan', 'paramedik'));
     }
+
     
 
     public function create()

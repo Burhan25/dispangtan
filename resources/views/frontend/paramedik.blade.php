@@ -31,7 +31,7 @@
     <!-- Slicknav -->
     <link rel="stylesheet" href="{{ asset('frontend/css/slicknav.min.css') }}">
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="{{ asset('frontendcss/owl-carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl-carousel.css') }}">
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/datepicker.css') }}">
     <!-- Animate CSS -->
@@ -85,7 +85,7 @@
                                     <ul class="nav menu">
                                         <li><a href="/home">Home</a></li>
                                         <li><a href="/client-panduan">Panduan</a></li>
-                                        <li class="active"><a href="/paramedik">Paramedik Veteriner</a></li>
+                                        <li class="active"><a href="/client-paramedik">Paramedik Veteriner</a></li>
                                         <li><a href="/blog">Blog</a></li>
                                     </ul>
                                 </nav>
@@ -126,20 +126,18 @@
 
     <!-- Dropdown for Kecamatan -->
     <div class="dropdown mt-3" style="justify-content: left; display: flex;">
-        <form action="{{ route('admin.paramedik.list') }}" method="GET">
-            <button class="dropdown-toggle btn btn-primary" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-map-marker-alt"></i> Pilih Kecamatan
-            </button>
-            <ul class="dropdown-menu w-10" aria-labelledby="dropdownMenuButton">
+        <form action="{{ route('frontend.paramdeik') }}" method="GET">
+            <select class="form-select" name="domisili" id="domisiliId" onchange="this.form.submit()">
+                <option selected value="">Choose...</option>
                 @foreach ($kecamatan as $kec)
-                    <li><button type="submit" name="kecamatan_id" value="{{ $kec->id }}"
-                            class="dropdown-item">{{ $kec->name }}</button></li>
+                    <option value="{{ $kec->id }}" {{ request()->input('domisili') == $kec->id ? 'selected' : '' }}>
+                        {{ $kec->name }}
+                    </option>
                 @endforeach
-            </ul>
+            </select>
         </form>
     </div>
-
+    
     <div class="container-card">
         @foreach ($paramedik as $p)
             <div class="game-card">
@@ -169,8 +167,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="game-card-button"
-                            onclick="redirectToWhatsApp('{{ $p->phone }}')">Whatsapp</button>
+                        <button class="game-card-button" onclick="redirectToWhatsApp('{{ $p->nomor_whatsapp }}')">WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -181,14 +178,21 @@
             document.getElementById('kecamatanIdInput').value = id;
             document.getElementById('kecamatanForm').submit();
         }
-    </script>
-    <script>
+
         function redirectToWhatsApp(phoneNumber) {
             window.location.href = `https://wa.me/${phoneNumber}`;
         }
+
+        // Mendapatkan elemen dropdown
+        const selectWarehouse = document.getElementById('domisiliId');
+
+        // Menambahkan event listener untuk perubahan nilai dropdown
+        selectWarehouse.addEventListener('change', function() {
+            // Menyubmit formulir secara otomatis saat nilai dropdown berubah
+            this.form.submit();
+        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

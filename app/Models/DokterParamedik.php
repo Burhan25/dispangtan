@@ -17,6 +17,8 @@ class DokterParamedik extends Model
         'nomor_str',
         'nomor_whatsapp',
     ];
+    protected $table = 'dokter_paramediks';
+    
 
     Public function domisiliId(): BelongsTo
     {

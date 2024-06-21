@@ -45,6 +45,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('frontend/css/animal.css') }}">
+
 </head>
 
 <body>
@@ -87,8 +89,7 @@
                         <div class="col-lg-3 col-md-3 col-12">
                             <!-- Start Logo -->
                             <div class="logo">
-                               <img src="{{ asset('frontend/img/logo.jpg') }}"
-                                        alt="#"></a>
+                                <img src="{{ asset('frontend/img/logo.jpg') }}" alt="#"></a>
                             </div>
                             <!-- End Logo -->
                             <!-- Mobile Nav -->
@@ -133,7 +134,9 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen <span></span></h1>
+                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen
+                                    <span></span>
+                                </h1>
                                 <p>Bidang Peternakan dan Kesehatan Hewan. </p>
                                 <div class="button">
                                     <a href="/konsultasi" class="btn">Konsultasi</a>
@@ -151,7 +154,9 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen <span></span></h1>
+                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen
+                                    <span></span>
+                                </h1>
                                 <p>Bidang Peternakan dan Kesehatan Hewan. </p>
                                 <div class="button">
                                     <a href="/konsultasi" class="btn">Konsultasi</a>
@@ -169,7 +174,9 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen <span></span></h1>
+                                <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen
+                                    <span></span>
+                                </h1>
                                 <p>Bidang Peternakan dan Kesehatan Hewan. </p>
                                 <div class="button">
                                     <a href="/konsultasi" class="btn">Konsultasi</a>
@@ -215,8 +222,8 @@
                                 <div class="single-content">
                                     <h4>Kontak</h4>
                                     <p>Informasi Narahubung Dispangtan</p>
-                                    <p>Telepon    :         (0271)895779</p>
-                                    <p>Email      :           pertanian@sragenkab.go.id</p>
+                                    <p>Telepon : (0271)895779</p>
+                                    <p>Email : pertanian@sragenkab.go.id</p>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +238,7 @@
                                 <div class="single-content">
                                     <h4>Jam Operasional</h4>
                                     <ul class="time-sidual">
-                                        <li class="day">Dinas Ketahanan Pangan, Pertanian dan Perikanan 
+                                        <li class="day">Dinas Ketahanan Pangan, Pertanian dan Perikanan
                                             beroprasi pada pukul :
                                         <li class="day">Senin - Kamis <span>07.30-16.00</span></li>
                                         <li class="day">Jumat <span>07.30-14.30</span></li>
@@ -257,15 +264,59 @@
                     <div class="section-title">
                         <h2>Layanan Paramedik Veteriner Kabupaten Sragen</h2>
                         <img src="{{ asset('frontend/img/section-img.png') }}" alt="#">
-                        <p>Paramedik Veteriner merupakan sesorang profesional medis yang memberikan perawatan medis pada hewan
+                        <p>Paramedik Veteriner merupakan sesorang profesional medis yang memberikan perawatan medis pada
+                            hewan
                             yang menuju ke lokasi.
-                            Paramedik Veteriner Dinas Peternakan dan Perikanan Kabubaten Sragen terdapat di setiap kecamatan pada
+                            Paramedik Veteriner Dinas Peternakan dan Perikanan Kabubaten Sragen terdapat di setiap
+                            kecamatan pada
                             Kabubaten Sragen.
-                            Layanan Paramedik Veteriner dapat digunakan sebagai fasilitas darurat dalam penanganan hewan.</p>
+                            Layanan Paramedik Veteriner dapat digunakan sebagai fasilitas darurat dalam penanganan
+                            hewan.</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="container-animal">
+                <h1>Hewan Ternak <span class="icon">🐾</span></h1>
+                <div class="pets">
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/sapi.jpg') }}" alt="Sapi">
+                        <p>Sapi</p>
+                    </div>
+
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/kambing.jpg') }}" alt="Kambing">
+                        <p>Kambing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-animal mt-5">
+                <h1>Hewan Peliharaan <span class="icon">🐾</span></h1>
+                <div class="pets">
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/kucing.jpg') }}" alt="Kucing">
+                        <p>Kucing</p>
+                    </div>
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/anjing.jpg') }}" alt="Anjing">
+                        <p>Anjing</p>
+                    </div>
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/hamster.jpg') }}" alt="Hewan Kecil">
+                        <p>Hewan Kecil</p>
+                    </div>
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/reptil.jpg') }}" alt="Reptil">
+                        <p>Reptil</p>
+                    </div>
+                    <div class="pet-item">
+                        <img src="{{ asset('frontend/img/animal/burung.jpg') }}" alt="Burung">
+                        <p>Burung</p>
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- <div class="row">
                 <div class="col-lg-4 col-12">
                     <!-- Start Single features -->
                     <div class="single-features">
@@ -299,7 +350,7 @@
                     </div>
                     <!-- End Single features -->
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!--/ End Feautes -->
@@ -370,13 +421,17 @@
                     <!-- Start Choose Left -->
                     <div class="choose-left">
                         <h3>Tentang Kami</h3>
-                        <p>Dinas Peternakan Kabupaten Sragen adalah lembaga pemerintah yang bertanggung jawab atas pengelolaan dan pengembangan sektor peternakan di wilayah Kabupaten Sragen. 
-                            Dengan fokus pada pelayanan yang berkualitas serta inovasi dalam peningkatan produktivitas, Dinas Peternakan Sragen berkomitmen untuk memajukan kesejahteraan peternak lokal. </p>
-                        <p>  Melalui program-program unggulan dan kerjasama yang erat dengan berbagai pihak, dinas ini berperan dalam meningkatkan kualitas ternak, penerapan teknologi modern, dan pendampingan kepada para peternak dalam menjaga keberlanjutan usaha peternakan di Kabupaten Sragen.
+                        <p>Dinas Peternakan Kabupaten Sragen adalah lembaga pemerintah yang bertanggung jawab atas
+                            pengelolaan dan pengembangan sektor peternakan di wilayah Kabupaten Sragen.
+                            Dengan fokus pada pelayanan yang berkualitas serta inovasi dalam peningkatan produktivitas,
+                            Dinas Peternakan Sragen berkomitmen untuk memajukan kesejahteraan peternak lokal. </p>
+                        <p> Melalui program-program unggulan dan kerjasama yang erat dengan berbagai pihak, dinas ini
+                            berperan dalam meningkatkan kualitas ternak, penerapan teknologi modern, dan pendampingan
+                            kepada para peternak dalam menjaga keberlanjutan usaha peternakan di Kabupaten Sragen.
                         </p>
                         <div class="row">
                             <div class="col-lg-6">
-                              </div>
+                            </div>
                             <div class="col-lg-6">
                             </div>
                         </div>
@@ -414,7 +469,8 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="content">
                         <h2>Tentang Website</h2>
-                        <p>Paramedik Veteriner melayani perawatan darurat yang tersebar di berbagai kecamatan Kabupaten Sragen.</p>
+                        <p>Paramedik Veteriner melayani perawatan darurat yang tersebar di berbagai kecamatan Kabupaten
+                            Sragen.</p>
                         <div class="button">
                             <a href="/paramedik" class="btn">Paramedik Veteriner</a>
                         </div>
@@ -462,7 +518,7 @@
                         </div>
                         <div class="single-pf">
                             <img src="{{ asset('frontend/img/pf1.jpg') }}" alt="#">
-                           
+
                         </div>
                         <div class="single-pf">
                             <img src="{{ asset('frontend/img/pf2.jpg') }}"alt="#">
@@ -545,13 +601,13 @@
                             <p>- Perawatan Paramedik Veteriner</p>
                             <p>- Panduan Praktis</p>
                             <p>- Laman Blog</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-footer">
                             <h2>Sosial Media</h2>
-                                <!-- Social -->
+                            <!-- Social -->
                             <ul class="social">
                                 <li><a href="#"><i class="icofont-facebook"></i></a></li>
                                 <li><a href="#"><i class="icofont-google-plus"></i></a></li>
@@ -566,12 +622,12 @@
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-footer">
                             <h2>Jam Operasional</h2>
-                            <p>Dinas Ketahanan Pangan, Pertanian dan Perikanan 
+                            <p>Dinas Ketahanan Pangan, Pertanian dan Perikanan
                                 beroprasi pada pukul :</p>
                             <ul class="time-sidual">
                                 <li class="day">Senin - Kamis <span>07.30 - 16.00</span></li>
                                 <li class="day">Jumat <span>07.30 - 14.30</span></li>
-                                <li class="day">Sabtu - Minggu <span> Tutup  </span></li>
+                                <li class="day">Sabtu - Minggu <span> Tutup </span></li>
                             </ul>
                         </div>
                     </div>
