@@ -118,8 +118,8 @@ body {
 }
 
 .chat .chat-history .message-data img {
-    border-radius: 40px;
-    width: 40px;
+    border-radius: 30px;
+    width: 30px;
 }
 
 .chat .chat-history .message-data-time {
@@ -236,7 +236,14 @@ body {
 .float-right {
     float: right;
 }
+.float-left {
+    float: left;
+}
 
+.clearfix{
+    display: flex;
+    flex-direction: column;
+}
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -336,4 +343,8 @@ body {
 
 .chat .chat-message button:hover {
     background: #0056b3;
+}
+.custom-pagination {
+    display: flex !important;
+    flex-direction: row !important;
 }
