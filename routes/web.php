@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Dokter\BlogController as DokterBlogController;
 use App\Http\Controllers\Dokter\ParamedikController as DokterParamedikController;
 use App\Http\Controllers\Dokter\KecamatanController as DokterKecamatanController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\KonsultasiController;
 use App\Http\Middleware\Dokter;
 
 /*------------------------ Route User ------------------------ */
@@ -37,9 +39,6 @@ Route::get('/chat-konsultasi', function () {
 Route::get('/blog', function () {
     return view('frontend.blog');
 });
-Route::get('/konsultasi', function () {
-    return view('frontend.konsultasi');
-});
 /*------------------------ End Route User ------------------------ */
 
 /*------------------------ Route Login & Register ------------------------ */
@@ -51,8 +50,9 @@ Route::get('/registerfoms', function () {
 });
 /*------------------------ End Route Login & Register ------------------------ */
 
+
 /*------------------------ Route Dokter ------------------------ */
-Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function () {
+Route::prefix('/dokter')->name('dokter.')->middleware(['dokter', 'verified'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('dokter.panduan.list');
     })->name('dashboard');
@@ -91,7 +91,7 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
         Route::delete('/list/edit/{id}', [DokterParamedikController::class, 'destroy'])->name('delete');
 
     });
-    
+
 
 
     Route::prefix('/konsultasi')->name('konsultasi.')->group(function () {
@@ -103,13 +103,17 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
 /*------------------------ End Route Dokter ------------------------ */
 
 /*------------------------ Route Admin ------------------------ */
-Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware(['admin', 'verified'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('admin.dokter.list');
     })->name('dashboard');
 
     Route::prefix('/dokter')->name('dokter.')->group(function () {
         Route::get('/', [DokterController::class, 'index'])->name('list');
+        Route::post('/create', [DokterController::class, 'store'])->name('store');
+        Route::post('/verify', [DokterController::class, 'verify'])->name('verify');
+        Route::post('/resend-email-verification', [DokterController::class, 'resendVerify'])->name('resend');
+        Route::delete('/delete', [DokterController::class, 'destroy'])->name('delete');
     });
     Route::prefix('/blog')->name('blog.')->group(function () {
         Route::get('/', [BlogController::class, 'index'])->name('list');
@@ -165,7 +169,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsultasi');
+    Route::post('/konsultasi/create', [KonsultasiController::class, 'create'])->name('konsultasi.create');
+    Route::get('/konsultasi/{chat}', [KonsultasiController::class, 'view'])->name('konsultasi.view');
+    Route::post('/konsultasi/{chat}/post-message', [KonsultasiController::class, 'post_message'])->name('konsultasi.message.post');
+
 });
+// Add a route that can load an image from storage based on a parameter
+Route::get('/images/{imageName}', [ImageController::class, 'show'])->name('image.show');
 /*------------------------ End Route Profile ------------------------ */
 
 require __DIR__ . '/auth.php';
