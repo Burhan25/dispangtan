@@ -10,7 +10,10 @@ use App\Http\Controllers\Admin\PanduanController;
 use App\Http\Controllers\Dokter\PanduanController as DokterPanduanController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\ShowPanduanController;
+use App\Http\Controllers\User\ShowBlogController;
 use App\Http\Controllers\Admin\ParamedikController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Dokter\BlogController as DokterBlogController;
 use App\Http\Controllers\Dokter\ParamedikController as DokterParamedikController;
 use App\Http\Controllers\Dokter\KecamatanController as DokterKecamatanController;
 use App\Http\Middleware\Dokter;
@@ -25,6 +28,8 @@ Route::get('/home', function () {
 });
 Route::get('/client-panduan', [ShowPanduanController::class, 'showUserPanduans'])->name('user.panduan');
 Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
+Route::get('/client-blog', [ShowBlogController::class, 'index'])->name('frontend.blog');
+// Route::get('/client-blog{id}', [ShowBlogController::class, 'show'])->name('user.blog.show');
 
 Route::get('/chat-konsultasi', function () {
     return view('frontend.chat-konsultasi');
@@ -52,6 +57,7 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
         return redirect()->route('dokter.panduan.list');
     })->name('dashboard');
 
+
     Route::prefix('/panduan')->name('panduan.')->group(function () {
         Route::get('/', [DokterPanduanController::class, 'index'])->name('list');
         Route::get('/create', [DokterPanduanController::class, 'create'])->name('create');
@@ -60,7 +66,14 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
         Route::post('/{panduan}/update', [DokterPanduanController::class, 'update'])->name('update');
         Route::delete('/{panduan}/delete', [DokterPanduanController::class, 'destroy'])->name('delete');
     });
-
+    Route::prefix('/blog')->name('blog.')->group(function () {
+        Route::get('/', [DokterBlogController::class, 'index'])->name('list');
+        Route::get('/create', [DokterBlogController::class, 'create'])->name('create');
+        Route::post('/store', [DokterBlogController::class, 'store'])->name('store');
+        Route::get('/{blog}/edit', [DokterBlogController::class, 'edit'])->name('edit');
+        Route::put('/{blog}/update', [DokterBlogController::class, 'update'])->name('update');
+        Route::delete('/{blog}/delete', [DokterBlogController::class, 'destroy'])->name('delete');
+    });
     Route::prefix('/paramedik')->name('paramedik.')->group(function () {
         Route::prefix('/kecamatan')->name('kecamatan.')->group(function () {
             Route::get('/create', [DokterKecamatanController::class, 'create'])->name('create');
@@ -69,6 +82,7 @@ Route::prefix('/dokter')->name('dokter.')->middleware('dokter')->group(function 
             Route::put('/edit/{id}', [DokterKecamatanController::class, 'update'])->name('edit.post');
             Route::delete('/edit/{id}', [DokterKecamatanController::class, 'destroy'])->name('delete');
         });
+       
         Route::get('/list', [DokterParamedikController::class, 'index'])->name('list');
         Route::get('/list/create', [DokterParamedikController::class, 'create'])->name('create');
         Route::post('/list/create', [DokterParamedikController::class, 'store'])->name('create.post');
@@ -97,6 +111,15 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
     Route::prefix('/dokter')->name('dokter.')->group(function () {
         Route::get('/', [DokterController::class, 'index'])->name('list');
     });
+    Route::prefix('/blog')->name('blog.')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('list');
+        Route::get('/create', [BlogController::class, 'create'])->name('create');
+        Route::post('/store', [BlogController::class, 'store'])->name('store');
+        Route::get('/{blog}/edit', [BlogController::class, 'edit'])->name('edit');
+        Route::put('/{blog}/update', [BlogController::class, 'update'])->name('update');
+        Route::delete('/{blog}/delete', [BlogController::class, 'destroy'])->name('delete');
+    });
+
 
     Route::prefix('/user')->name('user.')->group(function () {
         Route::get('/', function () {
@@ -151,4 +174,5 @@ require __DIR__ . '/auth.php';
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 /*------------------------ End Route Authenticated Dashboard ------------------------ */

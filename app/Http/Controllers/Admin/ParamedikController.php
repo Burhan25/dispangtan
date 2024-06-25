@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -23,7 +24,7 @@ class ParamedikController extends Controller
         return view('admin.paramedik.index', compact('kecamatan', 'paramedik'));
     }
 
-    
+
 
     public function create()
     {

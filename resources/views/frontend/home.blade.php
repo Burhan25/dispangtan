@@ -279,12 +279,12 @@
                 <h1>Hewan Ternak <span class="icon">🐾</span></h1>
                 <div class="pets">
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/sapi.jpg') }}" alt="Sapi">
+                        <img src="{{ asset('frontend/img/animal/sapi.svg') }}" alt="Sapi">
                         <p>Sapi</p>
                     </div>
 
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/kambing.jpg') }}" alt="Kambing">
+                        <img src="{{ asset('frontend/img/animal/kambing.svg') }}" alt="Kambing">
                         <p>Kambing</p>
                     </div>
                 </div>
@@ -293,23 +293,23 @@
                 <h1>Hewan Peliharaan <span class="icon">🐾</span></h1>
                 <div class="pets">
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/kucing.jpg') }}" alt="Kucing">
+                        <img src="{{ asset('frontend/img/animal/kucing.svg') }}" alt="Kucing">
                         <p>Kucing</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/anjing.jpg') }}" alt="Anjing">
+                        <img src="{{ asset('frontend/img/animal/anjing.svg') }}" alt="Anjing">
                         <p>Anjing</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/hamster.jpg') }}" alt="Hewan Kecil">
+                        <img src="{{ asset('frontend/img/animal/hamster.svg') }}" alt="Hewan Kecil">
                         <p>Hewan Kecil</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/reptil.jpg') }}" alt="Reptil">
+                        <img src="{{ asset('frontend/img/animal/reptil.svg') }}" alt="Reptil">
                         <p>Reptil</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/burung.jpg') }}" alt="Burung">
+                        <img src="{{ asset('frontend/img/animal/burung.svg') }}" alt="Burung">
                         <p>Burung</p>
                     </div>
                 </div>
@@ -416,7 +416,7 @@
 
                 </div>
             </div>
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-6 col-12">
                     <!-- Start Choose Left -->
                     <div class="choose-left">
@@ -438,21 +438,25 @@
                     </div>
                     <!-- End Choose Left -->
                 </div>
-                <div class="col-lg-6 col-12">
+                <div class=" col-lg-6 col-12">
                     <!-- Start Choose Rights -->
                     <div class="choose-right">
                         <div class="video-image">
-                            <!-- Video Animation -->
+                            {{-- <!-- Video Animation -->
                             <div class="promo-video">
                                 <div class="waves-block">
                                     <div class="waves wave-1"></div>
                                     <div class="waves wave-2"></div>
                                     <div class="waves wave-3"></div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!--/ End Video Animation -->
-                            <a href="https://youtu.be/nplYjBVXnz4?si=HAEoj3xFPj7k1zBA"
-                                class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
+                            {{-- <a href="https://youtu.be/ly36kn0ug4k" class="video video-popup mfp-iframe"><i
+                                    class="fa fa-play"></i></a> --}}
+                            <iframe width="100%" height="415" src="https://www.youtube.com/embed/nplYjBVXnz4"
+                                title="YouTube video"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen></iframe>
                         </div>
                     </div>
                     <!-- End Choose Rights -->
@@ -468,11 +472,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="content">
-                        <h2>Tentang Website</h2>
+                        <h2>Layanan Darurat</h2>
                         <p>Paramedik Veteriner melayani perawatan darurat yang tersebar di berbagai kecamatan Kabupaten
                             Sragen.</p>
                         <div class="button">
-                            <a href="/paramedik" class="btn">Paramedik Veteriner</a>
+                            <a href="/client-paramedik" class="btn">Paramedik Veteriner</a>
                         </div>
                     </div>
                 </div>

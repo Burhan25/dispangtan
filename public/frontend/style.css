@@ -1009,11 +1009,28 @@ body {
 .why-choose .choose-right {
     height: 100%;
     width: 100%;
+    margin-left: 200px;
     background-image: url("img/video-bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+}
+.dropdown-container {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+}
+.form-select {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .why-choose .choose-right .video {
     color: #fff;

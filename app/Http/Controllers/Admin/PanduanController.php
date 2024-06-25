@@ -18,7 +18,6 @@ class PanduanController extends Controller
     public function indexClient()
     {
         $panduans = Panduan::all();
-        // dd($panduans);
         return view('frontend.panduan', compact('panduans'));
     }
 

@@ -192,6 +192,33 @@ button:hover {
 
     padding: 20px;
 }
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.form-select {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+.form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.form-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+}
+.form-label i {
+    margin-right: 5px;
+}
 
 @media screen and (max-width: 600px) {
     .info {
@@ -236,7 +263,6 @@ button:hover {
     button:hover {
         background-color: #20c056;
     }
-
 
     .description {
         padding: 10px;
@@ -326,7 +352,6 @@ button:hover {
     margin-right: 8px; /* Adjust the space as needed */
 }
 
-
 .paramedik-name {
     font-size: 24px;
     font-weight: bold;
@@ -341,8 +366,6 @@ button:hover {
     padding: 0;
     color: #666; /* Warna teks */
 }
-
-
 
 .game-title {
     text-align: center; /* Menyelaraskan teks ke tengah */
@@ -381,5 +404,3 @@ button:hover {
 .dropdown-menu > li:last-child {
     margin-bottom: 0;
 }
-
-

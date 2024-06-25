@@ -126,18 +126,30 @@
 
     <!-- Dropdown for Kecamatan -->
     <div class="dropdown mt-3" style="justify-content: left; display: flex;">
-        <form action="{{ route('frontend.paramdeik') }}" method="GET">
-            <select class="form-select" name="domisili" id="domisiliId" onchange="this.form.submit()">
-                <option selected value="">Choose...</option>
-                @foreach ($kecamatan as $kec)
-                    <option value="{{ $kec->id }}" {{ request()->input('domisili') == $kec->id ? 'selected' : '' }}>
-                        {{ $kec->name }}
-                    </option>
-                @endforeach
-            </select>
-        </form>
+        {{-- <button class="dropdown-toggle btn btn-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fas fa-map-marker-alt"></i> Pilih Kecamatan
+        </button> --}}
+        <div class="dropdown-container">
+
+            <form action="{{ route('frontend.paramdeik') }}" method="GET">
+                <select class="form-select form-label" name="domisili" id="domisiliId" onchange="this.form.submit()">
+
+                    @foreach ($kecamatan as $kec)
+                        <option value="{{ $kec->id }}"
+                            {{ request()->input('domisili') == $kec->id ? 'selected' : '' }}>
+                            {{ $kec->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
+        </div>
+        {{-- <ul class="dropdown-menu w-10" aria-labelledby="dropdownMenuButton"> --}}
+        {{-- <div class="dropdown mt-3" style="justify-content: left; display: flex;"> --}}
+
+        {{-- </ul> --}}
     </div>
-    
+
     <div class="container-card">
         @foreach ($paramedik as $p)
             <div class="game-card">
@@ -167,12 +179,14 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="game-card-button" onclick="redirectToWhatsApp('{{ $p->nomor_whatsapp }}')">WhatsApp</button>
+                        <button class="game-card-button"
+                            onclick="redirectToWhatsApp('{{ $p->nomor_whatsapp }}')">WhatsApp</button>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
+
     <script>
         function selectKecamatan(id) {
             document.getElementById('kecamatanIdInput').value = id;
