@@ -94,7 +94,15 @@
                         </div>
                         <div class="col-lg-2 col-12">
                             <div class="get-quote">
-                                <a href="/konsultasi" class="btn">Konsultasi</a>
+                                @auth
+                                    <form action="{{ route('logout') }}" method="POST" id="logout">
+                                        @csrf
+                                    </form>
+                                    <a class="btn cursor-pointer text-white" onclick="logout()">LOGOUT</a>
+                                @endauth
+                                @guest
+                                    <a href="/konsultasi" class="btn cursor-pointer text-white">Konsultasi</a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -205,6 +213,10 @@
             // Menyubmit formulir secara otomatis saat nilai dropdown berubah
             this.form.submit();
         });
+        function logout() {
+                const form = document.getElementById("logout");
+                form.submit();
+            }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>

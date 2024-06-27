@@ -42,8 +42,7 @@
                                                             @csrf
                                                             <input type="hidden" name="email"
                                                                 value="{{ $dokter->email }}">
-                                                            <button type="submit"
-                                                                class="btn btn-sm text-info">Kirim
+                                                            <button type="submit" class="btn btn-sm text-info">Kirim
                                                                 ulang link
                                                                 verifikasi</button>
                                                         </form>
@@ -51,8 +50,8 @@
                                                             @csrf
                                                             <input type="hidden" name="email"
                                                                 value="{{ $dokter->email }}">
-                                                            <button type="submit"
-                                                                class="btn btn-sm text-info">Verisikasi sekarang</button>
+                                                            <button type="submit" class="btn btn-sm text-info">Verisikasi
+                                                                sekarang</button>
                                                         </form>
                                                     @endif
                                                 </div>
@@ -113,29 +112,29 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form action="{{ route('admin.dokter.store') }}" method="POST">
-                @csrf
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Fullname</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah User</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Fullname</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
                 </form>
             </div>
         </div>

@@ -108,7 +108,7 @@
                                     <form action="{{ route('logout') }}" method="POST" id="logout">
                                         @csrf
                                     </form>
-                                    <a class="btn cursor-pointer text-white" onclick="logout()">Log Out</a>
+                                    <a class="btn cursor-pointer text-white" onclick="logout()">LOGOUT</a>
                                 @endauth
                                 @guest
                                     <a href="/konsultasi" class="btn cursor-pointer text-white">Konsultasi</a>
@@ -144,8 +144,8 @@
 
 
     <body>
-        <div class="d-flex flex-wrap p-5 justify-between">
-            <div class="card w-2/6 h-fit" style="max-width: 100%;">
+        <div class="d-flex flex-wrap p-5 justify-center">
+            <div class="card w-1/2 h-fit" style="max-width: 100%;">
                 <div class="chat">
                     <h3 class="mb-3 text-lg font-bold">{{ $chat->title }}</h3>
                     <div class="chat-message clearfix">
@@ -165,7 +165,9 @@
                                         <div class="d-flex justify-between flex-wrap w-full my-3">
                                             @foreach ($message->images as $image)
                                                 <div class="w-1/2">
-                                                    <img style="width: 100%" src="{{ route('image.show', ['imageName' => $image->name]) }}" alt="img">
+                                                    <img style="width: 100%"
+                                                        src="{{ route('image.show', ['imageName' => $image->name]) }}"
+                                                        alt="img">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -182,7 +184,9 @@
                                         <div class="d-flex justify-between flex-wrap w-full my-3">
                                             @foreach ($message->images as $image)
                                                 <div class="w-1/2">
-                                                    <img style="width: 100%" src="{{ route('image.show', ['imageName' => $image->name]) }}" alt="img">
+                                                    <img style="width: 100%"
+                                                        src="{{ route('image.show', ['imageName' => $image->name]) }}"
+                                                        alt="img">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -209,9 +213,9 @@
                     @endif
                 </div>
             </div>
-            <div class="d-flex justify-start flex-wrap w-2/6">
+            {{-- <div class="d-flex justify-start flex-wrap w-2/6">
                 <p>i</p>
-            </div>
+            </div> --}}
 
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -235,6 +239,7 @@
                 });
 
             });
+
             function logout() {
                 const form = document.getElementById("logout");
                 form.submit();

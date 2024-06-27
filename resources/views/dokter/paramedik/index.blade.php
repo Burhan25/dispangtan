@@ -13,7 +13,7 @@
         @endif
 
         <table class="table border">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>No</th>
                     <th>Nama Kecamatan</th>
@@ -45,7 +45,7 @@
         <a href="{{ route('dokter.paramedik.create') }}" class="btn btn-primary mb-3">Tambah Paramedik</a>
 
         <table class="table border">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>Foto</th>
                     <th>Nama</th>
