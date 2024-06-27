@@ -28,7 +28,12 @@ class KonsultasiController extends Controller
 
     function view(Chat $chat)
     {
-        return view('frontend.chat-konsultasi', compact('chat'));
+        $user = Auth::user();
+        $list = Chat::where(function($q)use($chat){
+            $q->where('category', $chat->category);
+        })->orderByRaw("CASE WHEN created_by = ? THEN 0 ELSE 1 END", [$user->id])->orderBy('replied', 'ASC')->with(['user', 'messages'])->paginate(6);
+
+        return view('frontend.chat-konsultasi', compact('chat', 'list'));
     }
 
     function create(Request $request)

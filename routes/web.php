@@ -13,6 +13,7 @@ use App\Http\Controllers\User\ShowPanduanController;
 use App\Http\Controllers\User\ShowBlogController;
 use App\Http\Controllers\Admin\ParamedikController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Dokter\BlogController as DokterBlogController;
 use App\Http\Controllers\Dokter\ParamedikController as DokterParamedikController;
 use App\Http\Controllers\Dokter\KecamatanController as DokterKecamatanController;
@@ -82,7 +83,7 @@ Route::prefix('/dokter')->name('dokter.')->middleware(['dokter', 'verified'])->g
             Route::put('/edit/{id}', [DokterKecamatanController::class, 'update'])->name('edit.post');
             Route::delete('/edit/{id}', [DokterKecamatanController::class, 'destroy'])->name('delete');
         });
-       
+
         Route::get('/list', [DokterParamedikController::class, 'index'])->name('list');
         Route::get('/list/create', [DokterParamedikController::class, 'create'])->name('create');
         Route::post('/list/create', [DokterParamedikController::class, 'store'])->name('create.post');
@@ -126,9 +127,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['admin', 'verified'])->grou
 
 
     Route::prefix('/user')->name('user.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.user.index');
-        })->name('list');
+        Route::get('/', [UserController::class, 'index'])->name('list');
+        Route::delete('/delete', [UserController::class, 'destroy'])->name('delete');
     });
 
     Route::prefix('/panduan')->name('panduan.')->group(function () {

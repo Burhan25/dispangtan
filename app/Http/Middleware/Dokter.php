@@ -21,6 +21,6 @@ class Dokter
             }
         }
 
-        return redirect('/')->with('error', "You don't have admin access.");
+        return redirect('/konsultasi')->with('error', "You don't have dokter access.");
     }
 }
