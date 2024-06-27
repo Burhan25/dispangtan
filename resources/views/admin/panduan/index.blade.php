@@ -8,7 +8,7 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
         <table class="table border">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Judul</th>

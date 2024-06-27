@@ -30,7 +30,7 @@ Route::get('/home', function () {
     return view('frontend.home');
 });
 Route::get('/client-panduan', [ShowPanduanController::class, 'showUserPanduans'])->name('user.panduan');
-Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
+
 Route::get('/client-blog', [ShowBlogController::class, 'index'])->name('frontend.blog');
 // Route::get('/client-blog{id}', [ShowBlogController::class, 'show'])->name('user.blog.show');
 
@@ -173,6 +173,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/konsultasi/create', [KonsultasiController::class, 'create'])->name('konsultasi.create');
     Route::get('/konsultasi/{chat}', [KonsultasiController::class, 'view'])->name('konsultasi.view');
     Route::post('/konsultasi/{chat}/post-message', [KonsultasiController::class, 'post_message'])->name('konsultasi.message.post');
+    Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
 
 });
 // Add a route that can load an image from storage based on a parameter

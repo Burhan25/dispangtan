@@ -4,7 +4,7 @@
     <h4>Manajemen Blog</h4>
     <a href="{{ route('dokter.blog.create') }}" class="btn btn-primary">Create New Blog</a>
     <table class="table">
-        <thead>
+        <thead class="table-secondary">
             <tr>
                 <th>ID</th>
                 <th>Title</th>

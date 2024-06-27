@@ -44,7 +44,7 @@
         <a href="{{ route('admin.paramedik.create') }}" class="btn btn-primary mb-3">Tambah Paramedik</a>
 
         <table class="table border">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>Foto</th>
                     <th>Nama</th>

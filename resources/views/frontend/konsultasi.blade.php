@@ -105,7 +105,7 @@
                                     <form action="{{ route('logout') }}" method="POST" id="logout">
                                         @csrf
                                     </form>
-                                    <a class="btn cursor-pointer text-white" onclick="logout()">Log Out</a>
+                                    <a class="btn cursor-pointer text-white" onclick="logout()">LOGOUT</a>
                                 @endauth
                                 @guest
                                     <a href="/konsultasi" class="btn cursor-pointer text-white">Konsultasi</a>
@@ -222,7 +222,7 @@
                                 dijawab</span>
                         @endif
                     </div>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
                         {{ $chat->title }}</h5>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
                         {{ $chat->messages->first()->message ?? 'Belum memulai konsultasi' }}</p>

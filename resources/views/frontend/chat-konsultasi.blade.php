@@ -108,7 +108,7 @@
                                     <form action="{{ route('logout') }}" method="POST" id="logout">
                                         @csrf
                                     </form>
-                                    <a class="btn cursor-pointer text-white" onclick="logout()">Log Out</a>
+                                    <a class="btn cursor-pointer text-white" onclick="logout()">LOGOUT</a>
                                 @endauth
                                 @guest
                                     <a href="/konsultasi" class="btn cursor-pointer text-white">Konsultasi</a>
@@ -144,8 +144,8 @@
 
 
     <body>
-        <div class="d-flex flex-wrap p-5 justify-between">
-            <div class="card w-2/6 h-fit" style="max-width: 100%;">
+        <div class="d-flex flex-wrap p-5 justify-center">
+            <div class="card w-1/2 h-fit" style="max-width: 100%;">
                 <div class="chat">
                     <h3 class="mb-3 text-lg font-bold">{{ $chat->title }}</h3>
                     <div class="chat-message clearfix">
@@ -213,41 +213,9 @@
                     @endif
                 </div>
             </div>
-            <div class="d-flex justify-start flex-wrap w-3/6 gap-5">
-                @foreach ($list as $item)
-                    <div
-                        class="max-w-sm w-1/3 h-fit p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <div class="d-flex justify-end mb-3">
-                            @if ($item->replied)
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Sudah
-                                    dijawab</span>
-                            @else
-                                <span
-                                    class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Belum
-                                    dijawab</span>
-                            @endif
-                        </div>
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                            {{ $item->title}}</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
-                            {{ $item->messages->first()->message ?? 'Belum memulai konsultasi' }}</p>
-                        <p class="mb-3">Oleh {{ $item->user->name }} pada {{ $item->created_at }}</p>
-                        <a href="{{ route('konsultasi.view', $item->id) }}"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                            Tampilkan
-                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                            </svg>
-                        </a>
-                    </div>
-                @endforeach
-                <div class="d-flex w-full justify-center pb-5">
-                    {{ $list->links() }}
-                </div>
-            </div>
+            {{-- <div class="d-flex justify-start flex-wrap w-2/6">
+                <p>i</p>
+            </div> --}}
 
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
