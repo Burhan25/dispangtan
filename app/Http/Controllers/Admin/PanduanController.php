@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Panduan;
 use Illuminate\Support\Facades\Storage;
-
 
 class PanduanController extends Controller
 {
@@ -15,13 +13,7 @@ class PanduanController extends Controller
         $panduans = Panduan::all();
         return view('admin.panduan.index', compact('panduans'));
     }
-    public function indexClient()
-    {
-        $panduans = Panduan::all();
-        return view('frontend.panduan', compact('panduans'));
-    }
 
-    
     public function create()
     {
         return view('admin.panduan.create');
@@ -34,11 +26,12 @@ class PanduanController extends Controller
             'file' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $path = $request->file('file')->store('panduans', 'public');
+        $fileName = time() . '_' . $request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path('panduans'), $fileName);
 
         Panduan::create([
             'title' => $request->title,
-            'file' => $path,
+            'file' => 'panduans/' . $fileName,
         ]);
 
         return redirect()->route('admin.panduan.list')->with('success', 'Panduan created successfully.');
@@ -58,8 +51,13 @@ class PanduanController extends Controller
 
         $path = $panduan->file;
         if ($request->hasFile('file')) {
-            Storage::disk('public')->delete($panduan->file);
-            $path = $request->file('file')->store('panduans', 'public');
+            if (file_exists(public_path($panduan->file))) {
+                unlink(public_path($panduan->file));
+            }
+            
+            $fileName = time() . '_' . $request->file('file')->getClientOriginalName();
+            $request->file('file')->move(public_path('panduans'), $fileName);
+            $path = 'panduans/' . $fileName;
         }
 
         $panduan->update([
@@ -72,11 +70,11 @@ class PanduanController extends Controller
 
     public function destroy(Panduan $panduan)
     {
-        Storage::disk('public')->delete($panduan->file);
+        if (file_exists(public_path($panduan->file))) {
+            unlink(public_path($panduan->file));
+        }
+
         $panduan->delete();
         return redirect()->route('admin.panduan.list')->with('success', 'Panduan deleted successfully.');
     }
 }
-
-
-

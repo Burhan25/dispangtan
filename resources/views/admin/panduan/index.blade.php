@@ -1,5 +1,7 @@
 @extends('layouts.admin.dashboard')
+
 @section('title', 'Table Panduan')
+
 @section('content')
     <h4>Menejemen Panduan</h4>
     <div class="container mt-5">
@@ -21,14 +23,13 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $panduan->title }}</td>
-                        <td><a href="{{ asset('storage/' . $panduan->file) }}" target="_blank">View PDF</a></td>
+                        <td><a href="{{ asset($panduan->file) }}" target="_blank">View PDF</a></td>
                         <td>
                             <a href="{{ route('admin.panduan.edit', $panduan) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('admin.panduan.delete', $panduan) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure?')">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         </td>
                     </tr>

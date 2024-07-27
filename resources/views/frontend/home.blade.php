@@ -104,18 +104,21 @@
                                         <li class="active"><a href="/home">Home</a>
                                         </li>
                                         <li><a href="/client-panduan">Panduan </a></li>
-                                        <li><a href="/client-paramedik">Paramedik Veteriner</a>
+                                        <li>
+                                            <a class="dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Layanan
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="/client-paramedik">Paramedik Veteriner</a></li>
+                                                <li><a class="dropdown-item" href="/konsultasi">Konsultasi</a></li>
+                                            </ul>
                                         </li>
                                         <li><a href="/blog">Blog</a>
                                     </ul>
                                 </nav>
                             </div>
                             <!--/ End Main Menu -->
-                        </div>
-                        <div class="col-lg-2 col-12">
-                            <div class="get-quote">
-                                <a href="/konsultasi" class="btn">Konsultasi</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -314,43 +317,6 @@
                     </div>
                 </div>
             </div>
-
-
-            {{-- <div class="row">
-                <div class="col-lg-4 col-12">
-                    <!-- Start Single features -->
-                    <div class="single-features">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-ambulance-cross"></i>
-                        </div>
-                        <h3>Penanganan</h3>
-                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
-                    </div>
-                    <!-- End Single features -->
-                </div>
-                <div class="col-lg-4 col-12">
-                    <!-- Start Single features -->
-                    <div class="single-features">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-medical-sign-alt"></i>
-                        </div>
-                        <h3>Pengobatan</h3>
-                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
-                    </div>
-                    <!-- End Single features -->
-                </div>
-                <div class="col-lg-4 col-12">
-                    <!-- Start Single features -->
-                    <div class="single-features last">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-stethoscope"></i>
-                        </div>
-                        <h3>Perawatan</h3>
-                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
-                    </div>
-                    <!-- End Single features -->
-                </div>
-            </div> --}}
         </div>
     </section>
     <!--/ End Feautes -->
@@ -442,17 +408,6 @@
                     <!-- Start Choose Rights -->
                     <div class="choose-right">
                         <div class="video-image">
-                            {{-- <!-- Video Animation -->
-                            <div class="promo-video">
-                                <div class="waves-block">
-                                    <div class="waves wave-1"></div>
-                                    <div class="waves wave-2"></div>
-                                    <div class="waves wave-3"></div>
-                                </div>
-                            </div> --}}
-                            <!--/ End Video Animation -->
-                            {{-- <a href="https://youtu.be/ly36kn0ug4k" class="video video-popup mfp-iframe"><i
-                                    class="fa fa-play"></i></a> --}}
                             <iframe width="100%" height="415" src="https://www.youtube.com/embed/nplYjBVXnz4"
                                 title="YouTube video"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -542,56 +497,6 @@
     </div>
     </div>
     </section>
-    <!-- End Blog Area -->
-
-    <!-- Start clients -->
-    {{-- <div class="clients overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="owl-carousel clients-slider">
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client1.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client2.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client3.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client4.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client5.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client1.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client2.png') }}" alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client3.png') }}"alt="#">
-                        </div>
-                        <div class="single-clients">
-                            <img src="{{ asset('frontend/img/client4.png') }}" alt="#">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!--/Ens clients -->
-
-    <!-- Start Appointment -->
-
-    <!-- End Appointment -->
-
-    <!-- Start Newsletter Area -->
-
-    <!-- /End Newsletter Area -->
-
     <!-- Footer Area -->
     <footer id="footer" class="footer ">
         <!-- Footer Top -->
@@ -689,6 +594,9 @@
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

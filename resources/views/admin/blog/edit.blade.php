@@ -6,18 +6,18 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">Judul:</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ $blog->title }}" required>
         </div>
         <div class="form-group">
-            <label for="description">Description:</label>
+            <label for="description">Deskripsi:</label>
             <textarea class="form-control" id="description" name="description" required>{{ $blog->description }}</textarea>
         </div>
         <div class="form-group">
-            <label for="image">Image:</label>
+            <label for="image">Foto Berita:</label>
             <input type="file" class="form-control-file" id="image" name="image">
             <img src="{{ Storage::url($blog->image) }}" width="100" class="mt-2">
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Perbarui</button>
     </form>
 @endsection

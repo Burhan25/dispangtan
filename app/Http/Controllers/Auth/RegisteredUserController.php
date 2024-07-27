@@ -31,6 +31,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+         // Buat pengguna baru dengan data yang telah diverifikasi
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -41,13 +42,13 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role'=>UserRole::USER
+            'role'=>UserRole::USER //Pengguna sebagai user
         ]);
 
-        event(new Registered($user));
+        event(new Registered($user)); // Kirimkan event bahwa pengguna baru telah terdaftar
 
-        Auth::login($user);
+        Auth::login($user); // Login pengguna baru
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);// Redirect ke halaman beranda
     }
 }

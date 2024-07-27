@@ -10,9 +10,9 @@ use App\Http\Controllers\Admin\PanduanController;
 use App\Http\Controllers\Dokter\PanduanController as DokterPanduanController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\ShowPanduanController;
-use App\Http\Controllers\User\ShowBlogController;
 use App\Http\Controllers\Admin\ParamedikController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\User\ShowBlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Dokter\BlogController as DokterBlogController;
 use App\Http\Controllers\Dokter\ParamedikController as DokterParamedikController;
@@ -21,25 +21,34 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Middleware\Dokter;
 
+
+
 /*------------------------ Route User ------------------------ */
 
 Route::get('/', function () {
     return view('frontend.home');
 });
+
+
 Route::get('/home', function () {
     return view('frontend.home');
 });
 Route::get('/client-panduan', [ShowPanduanController::class, 'showUserPanduans'])->name('user.panduan');
 
-Route::get('/client-blog', [ShowBlogController::class, 'index'])->name('frontend.blog');
-// Route::get('/client-blog{id}', [ShowBlogController::class, 'show'])->name('user.blog.show');
+// Route::get('/detail-blog', function () {
+//     return view('frontend.detail-blog');
+// });
+// Route::get('/judul-blog', function () {
+//     return view('frontend.judul-blog');
+// });
+Route::get('/judul-blog', [ShowBlogController::class, 'index'])->name('judul-blog');
+Route::get('/detail-blog/{id}', [ShowBlogController::class, 'show'])->name('detail-blog');
 
 Route::get('/chat-konsultasi', function () {
     return view('frontend.chat-konsultasi');
 });
-Route::get('/blog', function () {
-    return view('frontend.blog');
-});
+
+
 /*------------------------ End Route User ------------------------ */
 
 /*------------------------ Route Login & Register ------------------------ */
@@ -90,7 +99,6 @@ Route::prefix('/dokter')->name('dokter.')->middleware(['dokter', 'verified'])->g
         Route::get('/list/edit/{id}', [DokterParamedikController::class, 'edit'])->name('edit');
         Route::put('/list/edit/{id}', [DokterParamedikController::class, 'update'])->name('edit.post');
         Route::delete('/list/edit/{id}', [DokterParamedikController::class, 'destroy'])->name('delete');
-
     });
 
 
@@ -115,6 +123,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['admin', 'verified'])->grou
         Route::post('/verify', [DokterController::class, 'verify'])->name('verify');
         Route::post('/resend-email-verification', [DokterController::class, 'resendVerify'])->name('resend');
         Route::delete('/delete', [DokterController::class, 'destroy'])->name('delete');
+        Route::resource('dokter', DokterController::class);
+        Route::post('dokter/verify', [DokterController::class, 'verify'])->name('dokter.verify');
+        Route::post('dokter/resend', [DokterController::class, 'resendVerify'])->name('dokter.resend');
+        Route::delete('dokter/delete/{id}', [DokterController::class, 'destroy'])->name('dokter.delete');
     });
     Route::prefix('/blog')->name('blog.')->group(function () {
         Route::get('/', [BlogController::class, 'index'])->name('list');
@@ -174,7 +186,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/konsultasi/{chat}', [KonsultasiController::class, 'view'])->name('konsultasi.view');
     Route::post('/konsultasi/{chat}/post-message', [KonsultasiController::class, 'post_message'])->name('konsultasi.message.post');
     Route::get('/client-paramedik', [ShowParamedikController::class, 'index'])->name('frontend.paramdeik');
-
 });
 // Add a route that can load an image from storage based on a parameter
 Route::get('/images/{imageName}', [ImageController::class, 'show'])->name('image.show');

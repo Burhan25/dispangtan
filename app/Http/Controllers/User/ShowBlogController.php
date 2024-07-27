@@ -10,12 +10,12 @@ class ShowBlogController extends Controller
     public function index()
     {
         $blogs = Blog::all();
-        return view('frontend.blog', compact('blogs'));
+        return view('frontend.judul-blog', compact('blogs'));
     }
 
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('frontend.blog-detail', compact('blog'));
+        return view('frontend.detail-blog', compact('blog'));
     }
 }

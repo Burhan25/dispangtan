@@ -28,7 +28,7 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <!-- icofont CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/icofont.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/icofont.css') }}">
     <!-- Slicknav -->
     <link rel="stylesheet" href="{{ asset('frontend/css/slicknav.min.css') }}">
     <!-- Owl Carousel CSS -->
@@ -38,7 +38,7 @@
     <!-- Animate CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css') }}">
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}"> --}}
 
     <!-- Medipro CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/normalize.css') }}">
@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/card-konsultasi.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('frontend/css/card-paramedik.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/card-paramedik.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/chat-konsultasi.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/image-uploader.min.css') }}">
     <!--Material Design Iconic Font-->
@@ -95,7 +95,7 @@
                                         </li>
                                         <li><a href="/client-paramedik">Paramedik Veteriner</a>
                                         </li>
-                                        <li><a href="/blog">Blog</a>
+                                        <li><a href="/judul-blog">Berita</a>
                                         </li>
                                     </ul>
                                 </nav>

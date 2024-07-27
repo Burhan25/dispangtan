@@ -79,9 +79,19 @@
                                 stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path 
                                 d="M18 15V9c0-2.828 0-4.243-.879-5.121C16.243 3 14.828 3 12 3H8c-2.828 0-4.243 0-5.121.879C2 4.757 2 6.172 2 9v6c0 2.828 0 4.243.879 5.121C3.757 21 5.172 21 8 21h12M6 8h8m-8 4h8m-8 4h4"/><path d="M18 8h1c1.414 0 2.121 0 2.56.44c.44.439.44 1.146.44 2.56v8a2 2 0 1 1-4 0z"/></g></svg>
                         </div>
-                        <span class="nav-link-text ms-1">Menejemen blog</span>
+                        <span class="nav-link-text ms-1">Menejemen Berita</span>
                     </a>
                 </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('konsultasi') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg>
+                    </div>
+                    <span class="nav-link-text ms-1">Menejemen Konsultasi</span>
+                </a>
+            </li>
                 </li>
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Keluar</h6>
@@ -133,7 +143,7 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="/loginfoms" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
+                                <span class="d-sm-inline d-none">Dokter</span>
                             </a>
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

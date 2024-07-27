@@ -11,14 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Dispangtan Kabupaten Sragen </title>
+    <title>Dispangtan Kabupaten Sragen</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('frontend/img/logo_srg.png') }}">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
         rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -85,8 +84,17 @@
                                     <ul class="nav menu">
                                         <li><a href="/home">Home</a></li>
                                         <li><a href="/client-panduan">Panduan</a></li>
-                                        <li class="active"><a href="/client-paramedik">Paramedik Veteriner</a></li>
-                                        <li><a href="/blog">Blog</a></li>
+                                        <li>
+                                            <a class="dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Layanan
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="/client-paramedik">Paramedik Veteriner</a></li>
+                                                <li><a class="dropdown-item" href="/konsultasi">Konsultasi</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/judul-blog">Berita</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -134,28 +142,17 @@
 
     <!-- Dropdown for Kecamatan -->
     <div class="dropdown mt-3" style="justify-content: left; display: flex;">
-        {{-- <button class="dropdown-toggle btn btn-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="fas fa-map-marker-alt"></i> Pilih Kecamatan
-        </button> --}}
         <div class="dropdown-container">
-
             <form action="{{ route('frontend.paramdeik') }}" method="GET">
                 <select class="form-select form-label" name="domisili" id="domisiliId" onchange="this.form.submit()">
-
                     @foreach ($kecamatan as $kec)
-                        <option value="{{ $kec->id }}"
-                            {{ request()->input('domisili') == $kec->id ? 'selected' : '' }}>
+                        <option value="{{ $kec->id }}" {{ request()->input('domisili') == $kec->id ? 'selected' : '' }}>
                             {{ $kec->nama }}
                         </option>
                     @endforeach
                 </select>
             </form>
         </div>
-        {{-- <ul class="dropdown-menu w-10" aria-labelledby="dropdownMenuButton"> --}}
-        {{-- <div class="dropdown mt-3" style="justify-content: left; display: flex;"> --}}
-
-        {{-- </ul> --}}
     </div>
 
     <div class="container-card">
@@ -163,7 +160,7 @@
             <div class="game-card">
                 <div class="game-card-content">
                     <div class="game-card-image-container">
-                        <img class="game-card-image" src="{{ asset('images/' . $p->foto) }}" alt="Gambar Game">
+                        <img class="game-card-image" src="{{ asset('images/' . $p->foto) }}" alt="Gambar Paramedik">
                     </div>
                     <div class="description">
                         <div class="game-title">
@@ -179,8 +176,7 @@
                                 </div>
                             </div>
                             <div class="info-item">
-                                <i class="bi bi-clipboard-heart-fill"
-                                    style="font-size: 2rem; padding-right: 20px"></i>
+                                <i class="bi bi-clipboard-heart-fill" style="font-size: 2rem; padding-right: 20px"></i>
                                 <div class="info-text">
                                     <span>Nomor STR</span>
                                     <p>{{ $p->nomor_str }}</p>
@@ -188,7 +184,7 @@
                             </div>
                         </div>
                         <button class="game-card-button"
-                            onclick="redirectToWhatsApp('{{ $p->nomor_whatsapp }}')">WhatsApp</button>
+                            onclick="redirectToWhatsApp('{{ $p->nomor_whatsapp }}', '{{ $p->nama }}', '{{ $p->nomor_str }}')">WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -201,8 +197,10 @@
             document.getElementById('kecamatanForm').submit();
         }
 
-        function redirectToWhatsApp(phoneNumber) {
-            window.location.href = `https://wa.me/${phoneNumber}`;
+        function redirectToWhatsApp(phoneNumber, nama, nomorSTR) {
+            const message = `Halo, saya ingin berkonsultasi dengan ${nama} nomor STR ${nomorSTR}.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         }
 
         // Mendapatkan elemen dropdown
@@ -213,10 +211,11 @@
             // Menyubmit formulir secara otomatis saat nilai dropdown berubah
             this.form.submit();
         });
+
         function logout() {
-                const form = document.getElementById("logout");
-                form.submit();
-            }
+            const form = document.getElementById("logout");
+            form.submit();
+        }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>

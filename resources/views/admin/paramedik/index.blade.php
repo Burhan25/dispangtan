@@ -83,6 +83,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus paramedik ini?')">Hapus</button>
                             </form>
+                            <a href="https://wa.me/{{ $item->nomor_whatsapp }}?text={{ urlencode('Halo, saya ingin berkonsultasi dengan ' . $item->nama . ' nomor STR ' . $item->nomor_str . '.') }}" target="_blank" class="btn btn-success">WhatsApp</a>
                         </td>
                     </tr>
                 @endforeach

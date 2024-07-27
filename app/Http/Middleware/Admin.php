@@ -9,18 +9,19 @@ use Symfony\Component\HttpFoundation\Response;
 class Admin
 {
     /**
-     * Handle an incoming request.
+     * Menangani request yang masuk.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
+    // Memeriksa apakah pengguna yang terautentikasi memiliki atribut 'role'
         if (isset(auth()->user()->role)) {
             if (auth()->user()->role == 'admin') {
                 return $next($request);
             }
         }
-
+     // Jika pengguna tidak memiliki akses admin, redirect ke dashboard dokter dengan pesan error
         return redirect()->route('dokter.dashboard')->with('error', "You don't have admin access.");
     }
 }

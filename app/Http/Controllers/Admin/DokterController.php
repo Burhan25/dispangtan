@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
-use App\Models\Dokter;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -35,48 +34,34 @@ class DokterController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'str' => ['required', 'string', 'size:21', 'unique:users,str'],
+            'nip' => ['nullable', 'digits:18', 'unique:users,nip'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'certificate' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Add this line
         ]);
+
+        if ($request->hasFile('certificate')) {
+            $certificatePath = $request->file('certificate')->store('certificates', 'public');
+        }
 
         $user = User::create([
             'name' => $request->name,
+            'str' => $request->str,
+            'nip' => $request->nip,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => UserRole::DOKTER,
+            'certificate' => $certificatePath ?? null,
         ]);
 
         $user->sendEmailVerificationNotification();
 
-        return redirect()->back()->with('success', 'Dockter berhasil didaftarkan');
+        return redirect()->back()->with('success', 'Dokter berhasil didaftarkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Other methods...
     public function destroy(Request $request)
     {
         User::where('id', $request->dokter_id)->delete();
@@ -90,7 +75,7 @@ class DokterController extends Controller
 
         $user = User::where('email', $email)->first();
 
-        if ($user && ! $user->hasVerifiedEmail()) {
+        if ($user && !$user->hasVerifiedEmail()) {
             $user->email_verified_at = Carbon::now();
             $user->save();
 
@@ -105,7 +90,7 @@ class DokterController extends Controller
 
         $user = User::where('email', $email)->first();
 
-        if ($user && ! $user->hasVerifiedEmail()) {
+        if ($user && !$user->hasVerifiedEmail()) {
             $user->sendEmailVerificationNotification();
 
             return back()->with('resent', 'Email verification has been successfully sent.');
