@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ParamedikController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $kecamatan = Kecamatan::all();
-        $paramedik = DokterParamedik::with('domisiliId')->get();
+        $selectedKecamatanId = $request->get('domisili');
+
+        if ($selectedKecamatanId) {
+            $paramedik = DokterParamedik::where('domisili', $selectedKecamatanId)->with('domisiliId')->get();
+        } else {
+            $paramedik = DokterParamedik::with('domisiliId')->get();
+        }
 
         return view('dokter.paramedik.index', compact('kecamatan', 'paramedik'));
     }

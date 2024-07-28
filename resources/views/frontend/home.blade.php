@@ -114,7 +114,7 @@
                                                 <li><a class="dropdown-item" href="/konsultasi">Konsultasi</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="/blog">Blog</a>
+                                        <li><a href="/judul-blog">Berita</a>
                                     </ul>
                                 </nav>
                             </div>
@@ -140,7 +140,7 @@
                                 <h1>Dinas <span>Ketahanan Pangan, Pertanian dan Perikanan </span> Kabubaten Sragen
                                     <span></span>
                                 </h1>
-                                <p>Bidang Peternakan dan Kesehatan Hewan. </p>
+                                <h4>Bidang Peternakan dan Kesehatan Hewan.</h4>
                                 <div class="button">
                                     <a href="/konsultasi" class="btn">Konsultasi</a>
                                 </div>

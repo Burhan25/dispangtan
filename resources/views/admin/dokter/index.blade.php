@@ -78,7 +78,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <!-- Modal to delete operator -->
+                                        <!-- Modal to delete dokter -->
                                         <form action="{{ route('admin.dokter.delete', $dokter->id) }}" method="POST">
                                             <div class="modal fade" id="addCategory{{ $dokter->id }}"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -90,7 +90,7 @@
                                                             <span class=" fs-5" id="staticBackdropLabel">Anda yakin
                                                                 untuk menghapus
                                                                 <b>{{ $dokter->name }}</b>
-                                                                dari operator?
+                                                                dari dokter?
                                                             </span>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -120,7 +120,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal to add operator -->
+    <!-- Modal to add dokter -->
     <div class="modal fade" id="addOperator" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
