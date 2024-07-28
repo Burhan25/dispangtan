@@ -282,12 +282,12 @@
                 <h1>Hewan Ternak <span class="icon">🐾</span></h1>
                 <div class="pets">
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Sapi.svg') }}" alt="Sapi">
+                        <img src="{{ asset('frontend/img/animal/Sapi.jpg') }}" alt="Sapi">
                         <p>Sapi</p>
                     </div>
 
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Kambing.svg') }}" alt="Kambing">
+                        <img src="{{ asset('frontend/img/animal/Kambing.jpg') }}" alt="Kambing">
                         <p>Kambing</p>
                     </div>
                 </div>
@@ -296,23 +296,23 @@
                 <h1>Hewan Peliharaan <span class="icon">🐾</span></h1>
                 <div class="pets">
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Kucing.svg') }}" alt="Kucing">
+                        <img src="{{ asset('frontend/img/animal/Kucing.jpg') }}" alt="Kucing">
                         <p>Kucing</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Anjing.svg') }}" alt="Anjing">
+                        <img src="{{ asset('frontend/img/animal/Anjing.jpg') }}" alt="Anjing">
                         <p>Anjing</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Hamster.svg') }}" alt="Hewan Kecil">
+                        <img src="{{ asset('frontend/img/animal/Hamster.jpg') }}" alt="Hewan Kecil">
                         <p>Hewan Kecil</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Reptil.svg') }}" alt="Reptil">
+                        <img src="{{ asset('frontend/img/animal/Reptil.jpg') }}" alt="Reptil">
                         <p>Reptil</p>
                     </div>
                     <div class="pet-item">
-                        <img src="{{ asset('frontend/img/animal/Burung.svg') }}" alt="Burung">
+                        <img src="{{ asset('frontend/img/animal/Burung.jpg') }}" alt="Burung">
                         <p>Burung</p>
                     </div>
                 </div>
